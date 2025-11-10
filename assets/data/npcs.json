@@ -1,1 +1,18 @@
-
+{
+  "npcs": [
+    {
+      "id": "npc001",
+      "name": "Elara Moonwhisper",
+      "race": "Elf",
+      "class": "Wizard",
+      "location": "Silverwood",
+      "portrait": "assets/images/portraits/elara.jpg",
+      "description": "A mysterious elven mage who guards ancient secrets",
+      "relationship": {
+        "player1": "Ally",
+        "player2": "Neutral"
+      },
+      "quests": ["The Lost Tome", "Shadows of the Past"]
+    }
+  ]
+}
