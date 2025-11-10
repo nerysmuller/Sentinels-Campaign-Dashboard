@@ -111,7 +111,7 @@ function activateEasterEgg() {
     
     // Show message
     const message = document.createElement('div');
-    message.textContent = '✨ The Celestrians bless your journey, Sentinel ✨';
+    message.textContent = 'May Celestria bless your journey, Fallen Sentinel';
     message.style.cssText = `
         position: fixed;
         top: 50%;
