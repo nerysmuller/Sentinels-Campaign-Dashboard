@@ -1,0 +1,518 @@
+/* ============================================
+   MAIN STYLESHEET - DQIX Campaign Hub
+   Celestial Theme
+   ============================================ */
+
+:root {
+    /* Celestial Color Palette */
+    --sky-light: #e8f4f8;
+    --sky-medium: #b8d4e8;
+    --sky-dark: #5a8cb8;
+    --celestial-blue: #4a7ba7;
+    --deep-night: #1a2332;
+    --starlight: #f4e8d0;
+    --gold-celestial: #ffd700;
+    --silver-shine: #c0c0c0;
+    --angel-white: #f8f8ff;
+    --divine-purple: #9370db;
+    --sacred-pink: #ffb6c1;
+    --ink-dark: #2c1810;
+    
+    /* Shadows & Glows */
+    --glow-soft: 0 0 20px rgba(255, 215, 0, 0.3);
+    --glow-medium: 0 0 30px rgba(255, 215, 0, 0.5);
+    --glow-strong: 0 0 40px rgba(255, 215, 0, 0.8);
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.25);
+    --shadow-hard: 0 8px 24px rgba(0, 0, 0, 0.4);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Typography */
+    --font-title: 'Cinzel', serif;
+    --font-medieval: 'MedievalSharp', cursive;
+    --font-body: 'Lora', serif;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--ink-dark);
+    background: linear-gradient(to bottom, #1a2332 0%, #2d4a6e 50%, #5a8cb8 100%);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ============================================
+   CELESTIAL BACKGROUND EFFECTS
+   ============================================ */
+
+.stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(1px 1px at 15% 60%, white, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 8s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+}
+
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
+    border-radius: 50%;
+    animation: float-celestial 15s infinite ease-in-out;
+    opacity: 0.4;
+}
+
+@keyframes float-celestial {
+    0%, 100% { 
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.4;
+    }
+    25% { 
+        transform: translateY(-30px) translateX(15px) scale(1.2);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-50px) translateX(-15px) scale(1);
+        opacity: 0.8;
+    }
+    75% { 
+        transform: translateY(-30px) translateX(10px) scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* ============================================
+   HEADER STYLES - CELESTIAL THEME
+   ============================================ */
+
+.fantasy-header.celestial-theme {
+    background: linear-gradient(to bottom, 
+        rgba(26, 35, 50, 0.95) 0%,
+        rgba(45, 74, 110, 0.95) 50%,
+        rgba(74, 123, 167, 0.95) 100%
+    );
+    padding: var(--spacing-lg) var(--spacing-md);
+    border-bottom: 4px solid var(--gold-celestial);
+    box-shadow: 
+        var(--shadow-hard),
+        inset 0 -2px 20px rgba(255, 215, 0, 0.2);
+    position: relative;
+    z-index: 100;
+}
+
+.header-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(255, 215, 0, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.title-container {
+    text-align: center;
+    position: relative;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.celestial-ornament {
+    font-size: 2rem;
+    color: var(--gold-celestial);
+    animation: pulse-glow 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.celestial-ornament.left {
+    animation-delay: 0s;
+}
+
+.celestial-ornament.right {
+    animation-delay: 1s;
+}
+
+.illuminated-title {
+    font-family: var(--font-title);
+    font-weight: 900;
+    color: var(--angel-white);
+    text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 50px rgba(147, 112, 219, 0.4);
+    letter-spacing: 3px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-line-1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--gold-celestial);
+}
+
+.title-line-2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(to right, var(--gold-celestial), var(--angel-white), var(--divine-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--starlight);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.subtitle i {
+    color: var(--gold-celestial);
+    font-size: 0.9em;
+    animation: float-feather 3s ease-in-out infinite;
+}
+
+@keyframes float-feather {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-5px) rotate(5deg); }
+}
+
+/* ============================================
+   NAVIGATION - CELESTIAL STYLE
+   ============================================ */
+
+.medieval-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: rgba(26, 35, 50, 0.6);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--gold-celestial);
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+}
+
+.nav-link:hover {
+    color: var(--angel-white);
+    background: rgba(255, 215, 0, 0.2);
+    border-color: var(--gold-celestial);
+    transform: translateY(-3px);
+    box-shadow: var(--glow-soft);
+}
+
+.nav-link.active {
+    color: var(--deep-night);
+    background: linear-gradient(135deg, var(--gold-celestial), #ffed4e);
+    border-color: var(--gold-celestial);
+    box-shadow: var(--glow-medium);
+}
+
+.nav-link.player-portal-link {
+    color: var(--sacred-pink);
+    border: 1px solid var(--divine-purple);
+}
+
+.nav-link.player-portal-link:hover {
+    background: rgba(147, 112, 219, 0.3);
+    color: var(--angel-white);
+    box-shadow: 0 0 20px rgba(147, 112, 219, 0.5);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.content-wrapper {
+    max-width: 1400px;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-lg);
+    position: relative;
+    z-index: 10;
+    min-height: 60vh;
+    background: rgba(232, 244, 248, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+}
+
+/* ============================================
+   FOOTER - CELESTIAL THEME
+   ============================================ */
+
+.fantasy-footer.celestial-footer {
+    background: linear-gradient(to top, 
+        rgba(26, 35, 50, 0.95) 0%,
+        rgba(45, 74, 110, 0.95) 100%
+    );
+    padding: var(--spacing-lg);
+    border-top: 4px solid var(--gold-celestial);
+    text-align: center;
+    position: relative;
+    margin-top: var(--spacing-xl);
+    box-shadow: inset 0 2px 20px rgba(255, 215, 0, 0.2);
+}
+
+.celestial-seal {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto var(--spacing-sm);
+    background: radial-gradient(circle, var(--gold-celestial), #b8941f);
+    border-radius: 50%;
+    border: 4px solid var(--angel-white);
+    box-shadow: 
+        var(--shadow-medium),
+        var(--glow-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate-seal 20s linear infinite;
+}
+
+@keyframes rotate-seal {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.celestial-seal i {
+    font-size: 2rem;
+    color: var(--angel-white);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+.footer-text {
+    font-family: var(--font-body);
+    color: var(--starlight);
+    font-size: 0.95rem;
+}
+
+.dm-signature {
+    font-style: italic;
+    color: var(--gold-celestial);
+}
+
+.separator {
+    margin: 0 var(--spacing-sm);
+    color: var(--gold-celestial);
+}
+
+.campaign-year {
+    font-family: var(--font-title);
+    color: var(--angel-white);
+}
+
+.footer-flourish {
+    width: 250px;
+    height: 2px;
+    background: linear-gradient(to right, 
+        transparent, 
+        var(--gold-celestial), 
+        var(--divine-purple), 
+        var(--gold-celestial), 
+        transparent
+    );
+    margin: var(--spacing-sm) auto 0;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* ============================================
+   LOADING OVERLAY - CELESTIAL
+   ============================================ */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(26, 35, 50, 0.98), 
+        rgba(45, 74, 110, 0.98)
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    text-align: center;
+    color: var(--gold-celestial);
+    position: relative;
+}
+
+.loading-spinner i {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.spinning-star {
+    animation: orbit-stars 3s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.spinning-star.delay-1 {
+    animation-delay: 1s;
+    color: var(--divine-purple);
+}
+
+.spinning-star.delay-2 {
+    animation-delay: 2s;
+    color: var(--angel-white);
+}
+
+@keyframes orbit-stars {
+    0% { 
+        transform: translateX(-50%) rotate(0deg) translateY(-40px) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(-50%) rotate(360deg) translateY(-40px) rotate(-360deg);
+        opacity: 1;
+    }
+}
+
+.loading-spinner p {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-top: 100px;
+    animation: fade-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fade-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .medieval-nav {
+        gap: 0.25rem;
+    }
+    
+    .nav-link {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .nav-link i {
+        font-size: 1rem;
+    }
+    
+    .content-wrapper {
+        padding: var(--spacing-sm);
+        margin: var(--spacing-md) var(--spacing-xs);
+    }
+    
+    .celestial-ornament {
+        font-size: 1.5rem;
+    }
+}
