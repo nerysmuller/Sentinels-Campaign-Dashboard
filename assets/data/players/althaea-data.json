@@ -1,1 +1,19 @@
-
+{
+  "characterName": "Althaea Liadon",
+  "class": "Cleric",
+  "level": 6,
+  "notes": [
+    {
+      "session": 6,
+      "date": "2025-11-09",
+      "content": "Discovered the ancient forge beneath the mountain..."
+    }
+  ],
+  "questLog": [
+    {
+      "title": "Reclaim the Hammer",
+      "status": "In Progress",
+      "description": "Find the legendary hammer of my ancestors"
+    }
+  ]
+}
