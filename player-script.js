@@ -9,19 +9,19 @@ const playerData = {
         name: "Artyom Tonare",
         class: "Level 6 Barbarian",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/139724008/"
+        sheetUrl: "www.dndbeyond.com/characters/139724008/"
     },
     player3: {
         name: "Kova Liadon",
         class: "Level 6 Ranger",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/141783776/"
+        sheetUrl: "www.dndbeyond.com/characters/141783776/"
     },
     player4: {
         name: "Trevor Adrieth",
         class: "Level 6 Paladin",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/138489091/"
+        sheetUrl: "www.dndbeyond.com/characters/138489091/"
     }
 };
 
