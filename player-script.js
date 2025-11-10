@@ -1,34 +1,27 @@
-// Player data configuration
 const playerData = {
     player1: {
-        name: "Character Name 1",
-        class: "Class & Level",
+        name: "Althaea Liadon",
+        class: "Level 6 Cleric",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/YOUR_CHARACTER_ID"
+        sheetUrl: "https://www.dndbeyond.com/characters/141783747"
     },
     player2: {
-        name: "Character Name 2",
-        class: "Class & Level",
+        name: "Artyom Tonare",
+        class: "Level 6 Barbarian",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/YOUR_CHARACTER_ID"
+        sheetUrl: "https://www.dndbeyond.com/characters/139724008"
     },
     player3: {
-        name: "Character Name 3",
-        class: "Class & Level",
+        name: "Kova Liadon",
+        class: "Level 6 Ranger",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/YOUR_CHARACTER_ID"
+        sheetUrl: "https://www.dndbeyond.com/characters/141783776"
     },
     player4: {
-        name: "Character Name 4",
-        class: "Class & Level",
+        name: "Trevor Adrieth",
+        class: "Level 6 Paladin",
         password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/YOUR_CHARACTER_ID"
-    },
-    player5: {
-        name: "Character Name 5",
-        class: "Class & Level",
-        password: "sentinel",
-        sheetUrl: "https://www.dndbeyond.com/characters/YOUR_CHARACTER_ID"
+        sheetUrl: "https://www.dndbeyond.com/characters/138489091"
     }
 };
 
