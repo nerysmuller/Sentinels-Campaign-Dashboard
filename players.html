@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Hub - The Protectorate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <header class="main-header">
+        <div class="header-glow"></div>
+        <h1 class="title-main">THE PROTECTORATE</h1>
+        <p class="subtitle">Sentinel Archives</p>
+        <div class="divider"></div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html" class="nav-link">
+            <span class="nav-icon">⚔️</span>
+            <span>Home</span>
+        </a>
+        <a href="lore.html" class="nav-link">
+            <span class="nav-icon">📜</span>
+            <span>Lore</span>
+        </a>
+        <a href="characters.html" class="nav-link">
+            <span class="nav-icon">👥</span>
+            <span>Characters</span>
+        </a>
+        <a href="locations.html" class="nav-link">
+            <span class="nav-icon">🏰</span>
+            <span>Locations</span>
+        </a>
+        <a href="maps.html" class="nav-link">
+            <span class="nav-icon">🗺️</span>
+            <span>Maps</span>
+        </a>
+        <a href="players.html" class="nav-link special active">
+            <span class="nav-icon">✨</span>
+            <span>Player Hub</span>
+        </a>
+    </nav>
+
+    <main class="container">
+        <!-- Login Form -->
+        <div id="loginSection" class="login-container">
+            <h2>Sentinel Archives Access</h2>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">
+                Enter your credentials to access your personal chronicle.
+            </p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="playerSelect">Select Your Character</label>
+                    <select id="playerSelect" required>
+                        <option value="">-- Choose Your Sentinel --</option>
+                        <option value="player1">Player Character 1</option>
+                        <option value="player2">Player Character 2</option>
+                        <option value="player3">Player Character 3</option>
+                        <option value="player4">Player Character 4</option>
+                        <option value="player5">Player Character 5</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="login-button">Enter Archives</button>
+                <p class="error-message" id="errorMessage" style="display: none;"></p>
+            </form>
+            
+            <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-glow); text-align: center;">
+                <p style="color: var(--text-dim); font-size: 0.9rem;">
+                    Forgot your password? Contact your DM.<br>
+                    <em>Default passwords are set to "sentinel" for testing.</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Player Dashboard (Hidden by default) -->
+        <div id="playerDashboard" class="player-dashboard">
+            <div class="dashboard-header">
+                <h2 id="playerName">Welcome, Sentinel</h2>
+                <p class="player-class" id="playerClass">Class & Level</p>
+                <button class="logout-button" id="logoutBtn">Logout</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Session Notes -->
+                <div class="dashboard-section" style="grid-column: span 2;">
+                    <h3>📝 Session Notes</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 15px; font-size: 0.9rem;">
+                        Record your thoughts, plans, and observations here. Your notes are saved locally in your browser.
+                    </p>
+                    <textarea 
+                        class="notes-area" 
+                        id="sessionNotes" 
+                        placeholder="What happened this session? What do you plan to do next? Any theories or suspicions?&#10;&#10;Your notes are private and automatically saved."
+                    ></textarea>
+                    <button class="save-button" id="saveNotesBtn">💾 Save Notes</button>
+                    <p id="saveStatus" style="color: var(--accent-gold); margin-top: 10px; font-size: 0.9rem;"></p>
+                </div>
+
+                <!-- Character Sheet Embed -->
+                <div class="dashboard-section" style="grid-column: span 2;">
+                    <h3>⚔️ Character Sheet</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 15px; font-size: 0.9rem;">
+                        Your D&D Beyond character sheet. Update the URL in the script to link your actual sheet.
+                    </p>
+                    <div style="background: rgba(10,10,15,0.8); padding: 30px; border: 1px solid var(--accent-gold); border-radius: 8px; text-align: center;">
+                        <p style="color: var(--accent-gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">
+                            Character Sheet Integration
+                        </p>
+                        <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 20px;">
+                            To embed your D&D Beyond character sheet:<br><br>
+                            1. Go to your character on D&D Beyond<br>
+                            2. Copy your character sheet URL<br>
+                            3. Send it to your DM to add here<br><br>
+                            Alternatively, you can link to your sheet:
+                        </p>
+                        <a href="#" id="characterSheetLink" class="card-button" target="_blank">View My Character Sheet</a>
+                        <p style="color: var(--text-dim); margin-top: 20px; font-size: 0.85rem; font-style: italic;">
+                            Note: D&D Beyond doesn't support direct embedding, but we can link to your sheet or display 
+                            important stats here. Talk to your DM about customization options.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Reference -->
+                <div class="dashboard-section">
+                    <h3>📚 Quick Reference</h3>
+                    <div style="color: var(--text-light); line-height: 1.8;">
+                        <p style="margin-bottom: 10px;"><strong>Important NPCs:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--text-dim);">
+                            <li>Elder Theron - World Tree keeper</li>
+                            <li>Lady Cassandra - Alliance Queen</li>
+                            <li>Seraphina Luminis - Empire Inquisitor</li>
+                        </ul>
+                        
+                        <p style="margin-bottom: 10px;"><strong>Current Quests:</strong></p>
+                        <ul style="margin-left: 20px; color: var(--text-dim);">
+                            <li>Investigate disturbances near World Tree</li>
+                            <li>Learn more about Sentinel legacy</li>
+                            <li>Uncover demon cult activities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Party Information -->
+                <div class="dashboard-section">
+                    <h3>👥 Your Party</h3>
+                    <div style="color: var(--text-light); line-height: 1.8;">
+                        <p style="color: var(--text-dim); margin-bottom: 15px;">
+                            Fellow Sentinels in your party:
+                        </p>
+                        <div id="partyList" style="display: flex; flex-direction: column; gap: 10px;">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Tracker -->
+                <div class="dashboard-section">
+                    <h3>🎒 Important Items</h3>
+                    <textarea 
+                        class="notes-area" 
+                        id="inventoryNotes"
+                        style="min-height: 150px;"
+                        placeholder="Track important quest items, magical artifacts, or plot-relevant gear here..."
+                    ></textarea>
+                    <button class="save-button" id="saveInventoryBtn">💾 Save Inventory</button>
+                </div>
+
+                <!-- Relationships & Factions -->
+                <div class="dashboard-section">
+                    <h3>🤝 Relationships</h3>
+                    <textarea 
+                        class="notes-area" 
+                        id="relationshipNotes"
+                        style="min-height: 150px;"
+                        placeholder="Track your relationships with NPCs and factions. Who do you trust? Who opposes you?"
+                    ></textarea>
+                    <button class="save-button" id="saveRelationshipsBtn">💾 Save Relationships</button>
+                </div>
+
+                <!-- Theories & Mysteries -->
+                <div class="dashboard-section" style="grid-column: span 2;">
+                    <h3>🔍 Theories & Mysteries</h3>
+                    <textarea 
+                        class="notes-area" 
+                        id="theoriesNotes"
+                        placeholder="What secrets have you uncovered? What mysteries remain unsolved? Document your theories here..."
+                    ></textarea>
+                    <button class="save-button" id="saveTheoriesBtn">💾 Save Theories</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-glow);">
+                <p style="color: var(--text-dim); font-size: 0.9rem;">
+                    All notes are saved locally in your browser's storage. Make sure to backup important information!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>The Protectorate Campaign | DM: Nerys Muller</p>
+        <p class="footer-quote">"Your story is yours to write."</p>
+    </footer>
+
+    <script src="player-script.js"></script>
+</body>
+</html>
