@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player Hub - The Protectorate</title>
+    <title>Player Hub - Sentinels to the Starry Skies</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -13,8 +13,8 @@
     
     <header class="main-header">
         <div class="header-glow"></div>
-        <h1 class="title-main">THE PROTECTORATE</h1>
-        <p class="subtitle">Sentinel Archives</p>
+        <h1 class="title-main">Sentinels to the Starry Skies</h1>
+        <p class="subtitle">Celestrian Archives</p>
         <div class="divider"></div>
     </header>
 
@@ -48,7 +48,7 @@
     <main class="container">
         <!-- Login Form -->
         <div id="loginSection" class="login-container">
-            <h2>Sentinel Archives Access</h2>
+            <h2>Celestrian Archives Access</h2>
             <p style="color: var(--text-dim); margin-bottom: 30px;">
                 Enter your credentials to access your personal chronicle.
             </p>
@@ -58,11 +58,10 @@
                     <label for="playerSelect">Select Your Character</label>
                     <select id="playerSelect" required>
                         <option value="">-- Choose Your Sentinel --</option>
-                        <option value="player1">Player Character 1</option>
-                        <option value="player2">Player Character 2</option>
-                        <option value="player3">Player Character 3</option>
-                        <option value="player4">Player Character 4</option>
-                        <option value="player5">Player Character 5</option>
+                        <option value="player1">Althaea Liadon</option>
+                        <option value="player2">Artyom Tonare</option>
+                        <option value="player3">Kova Liadon</option>
+                        <option value="player4">Trevor Adrieth</option>
                     </select>
                 </div>
                 
@@ -77,7 +76,7 @@
             
             <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-glow); text-align: center;">
                 <p style="color: var(--text-dim); font-size: 0.9rem;">
-                    Forgot your password? Contact your DM.<br>
+                    Forgot your password? Contact Nerys and she'll get things sorted.<br>
                     <em>Default passwords are set to "sentinel" for testing.</em>
                 </p>
             </div>
@@ -121,7 +120,7 @@
                             To embed your D&D Beyond character sheet:<br><br>
                             1. Go to your character on D&D Beyond<br>
                             2. Copy your character sheet URL<br>
-                            3. Send it to your DM to add here<br><br>
+                            3. Send it to Nerys and she'll add it here<br><br>
                             Alternatively, you can link to your sheet:
                         </p>
                         <a href="#" id="characterSheetLink" class="card-button" target="_blank">View My Character Sheet</a>
@@ -138,16 +137,16 @@
                     <div style="color: var(--text-light); line-height: 1.8;">
                         <p style="margin-bottom: 10px;"><strong>Important NPCs:</strong></p>
                         <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--text-dim);">
-                            <li>Elder Theron - World Tree keeper</li>
-                            <li>Lady Cassandra - Alliance Queen</li>
-                            <li>Seraphina Luminis - Empire Inquisitor</li>
+                            <li>Aquila - Knight Protector of the Celestrian Order</li>
+                            <li>King Schott - Ruling Monarch of Stornway</li>
+                            <li>Captain Geraine - Former Captain of the Stornway Royal Guard</li>
                         </ul>
                         
                         <p style="margin-bottom: 10px;"><strong>Current Quests:</strong></p>
                         <ul style="margin-left: 20px; color: var(--text-dim);">
-                            <li>Investigate disturbances near World Tree</li>
-                            <li>Learn more about Sentinel legacy</li>
-                            <li>Uncover demon cult activities</li>
+                            <li>Gather benevolescence to power up the Starflight Express</li>
+                            <li>Gain passageway to Alltrades Abbey/li>
+                            <li>Investigate the Wight Knight's 'death'</li>
                         </ul>
                     </div>
                 </div>
@@ -160,7 +159,6 @@
                             Fellow Sentinels in your party:
                         </p>
                         <div id="partyList" style="display: flex; flex-direction: column; gap: 10px;">
-                            <!-- Will be populated by JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -210,8 +208,8 @@
     </main>
 
     <footer class="main-footer">
-        <p>The Protectorate Campaign | DM: Nerys Muller</p>
-        <p class="footer-quote">"Your story is yours to write."</p>
+        <p>Sentinels to the Starry Skies | DM: Nerys Muller</p>
+        <p class="footer-quote">"Even death shall offer you no respite."</p>
     </footer>
 
     <script src="player-script.js"></script>
