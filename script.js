@@ -187,14 +187,14 @@ window.addEventListener('load', function() {
     }, 100);
 });
 
-// Meteor Shower Page Transitions
-function initializeMeteorTransitions() {
+// Smooth Celestial Page Transitions
+function initializePageTransitions() {
     document.querySelectorAll('a[href]').forEach(link => {
         if (link.href.startsWith(window.location.origin) && !link.href.includes('#')) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetUrl = this.href;
-                triggerMeteorShower(() => {
+                triggerCelestialSweep(() => {
                     window.location.href = targetUrl;
                 });
             });
@@ -202,103 +202,50 @@ function initializeMeteorTransitions() {
     });
 }
 
-function triggerMeteorShower(callback) {
-    const transition = document.getElementById('pageTransition');
-    if (!transition) return callback(); // Fallback if div missing
-    
-    transition.classList.add('active');
-    
-    for (let i = 0; i < 20; i++) {
-        setTimeout(() => {
-            createMeteor();
-        }, i * 50);
-    }
-    
-    setTimeout(() => {
-        if (callback) callback();
-    }, 1500);
-}
-
-function createMeteor() {
-    const transition = document.getElementById('pageTransition');
-    if (!transition) return;
-    
-    const meteor = document.createElement('div');
-    meteor.className = 'meteor';
-    
-    meteor.style.top = `${Math.random() * 50}%`;
-    meteor.style.left = `${Math.random() * 100}%`;
-    
-    transition.appendChild(meteor);
-    
-    setTimeout(() => {
-        meteor.remove();
-    }, 1500);
-}
-
-// Initialize meteor transitions
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeMeteorTransitions);
-} else {
-    initializeMeteorTransitions();
-}
-
-// Celestial Star Chart Page Transition
-function triggerMeteorShower(callback) {
+function triggerCelestialSweep(callback) {
     const transition = document.getElementById('pageTransition');
     if (!transition) return callback();
     
     transition.classList.add('active');
-    createCelestialConstellation();
+    
+    // Create sweep beam
+    const beam = document.createElement('div');
+    beam.className = 'sweep-beam';
+    transition.appendChild(beam);
+    
+    // Create star particles
+    createStarParticles(transition);
     
     setTimeout(() => {
         if (callback) callback();
-    }, 1500);
+    }, 1200);
 }
 
-function createCelestialConstellation() {
-    const transition = document.getElementById('pageTransition');
-    if (!transition) return;
+function createStarParticles(container) {
+    const particleCount = 30;
     
-    const stars = [
-        { x: 20, y: 20 }, { x: 35, y: 15 }, { x: 50, y: 25 },
-        { x: 65, y: 20 }, { x: 80, y: 30 }, { x: 30, y: 50 },
-        { x: 45, y: 55 }, { x: 60, y: 48 }, { x: 75, y: 60 }
-    ];
-    
-    stars.forEach((pos, index) => {
+    for (let i = 0; i < particleCount; i++) {
         setTimeout(() => {
-            const star = document.createElement('div');
-            star.className = 'celestial-star';
-            star.style.left = `${pos.x}%`;
-            star.style.top = `${pos.y}%`;
-            transition.appendChild(star);
-            setTimeout(() => star.remove(), 1500);
-        }, index * 80);
-    });
-    
-    setTimeout(() => {
-        for (let i = 0; i < stars.length - 1; i++) {
-            setTimeout(() => {
-                const line = document.createElement('div');
-                line.className = 'constellation-line';
-                
-                const x1 = stars[i].x;
-                const y1 = stars[i].y;
-                const x2 = stars[i + 1].x;
-                const y2 = stars[i + 1].y;
-                
-                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-                
-                line.style.left = `${x1}%`;
-                line.style.top = `${y1}%`;
-                line.style.width = `${length}%`;
-                line.style.transform = `rotate(${angle}deg)`;
-                
-                transition.appendChild(line);
-                setTimeout(() => line.remove(), 1200);
-            }, i * 100);
-        }
-    }, 400);
+            const particle = document.createElement('div');
+            particle.className = 'star-particle';
+            
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 0.5}s`;
+            
+            container.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 1200);
+        }, i * 20);
+    }
+}
+
+// Initialize page transitions
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePageTransitions);
+} else {
+    initializePageTransitions();
 }
