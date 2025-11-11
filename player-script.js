@@ -99,10 +99,10 @@ const playerData = {
         }
     }
 };
-
 // Current logged-in player
 let currentPlayer = null;
 let characterData = null;
+let currentNoteCategory = null;
 
 // DOM Elements
 const loginSection = document.getElementById('loginSection');
@@ -129,14 +129,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Logout handler
     logoutBtn.addEventListener('click', handleLogout);
 
-    // Auto-save notes handlers
-    setupNoteSaving('sessionNotes', 'saveNotesBtn');
-    setupNoteSaving('inventoryNotes', 'saveInventoryBtn');
-    setupNoteSaving('relationshipNotes', 'saveRelationshipsBtn');
-    setupNoteSaving('theoriesNotes', 'saveTheoriesBtn');
-
     // Initialize dice roller
     initializeDiceRoller();
+    
+    // Initialize meteor shower on navigation
+    initializeMeteorTransitions();
+    
+    // Load user theme
+    loadUserTheme();
 });
 
 function handleLogin() {
@@ -187,8 +187,11 @@ async function showDashboard() {
     // Load character data
     await loadCharacterData();
     
-    // Load saved notes
-    loadNotes();
+    // Initialize theme selector
+    initializeThemeSelector();
+    
+    // Initialize note managers
+    initializeNoteManagers();
     
     // Populate party list
     populatePartyList();
@@ -196,11 +199,7 @@ async function showDashboard() {
 
 async function loadCharacterData() {
     const player = playerData[currentPlayer];
-    
-    // Try to fetch from D&D Beyond (this is a placeholder - actual implementation would need CORS proxy)
-    // For now, we'll use fallback data
     characterData = player.fallbackData;
-    
     displayCharacterSheet(characterData);
 }
 
@@ -260,6 +259,306 @@ function displayCharacterSheet(data) {
     });
 }
 
+// Meteor Shower Transition
+function initializeMeteorTransitions() {
+    // Add transition overlay
+    const transitionDiv = document.createElement('div');
+    transitionDiv.className = 'page-transition';
+    transitionDiv.id = 'pageTransition';
+    document.body.appendChild(transitionDiv);
+    
+    // Intercept navigation links
+    document.querySelectorAll('a[href]').forEach(link => {
+        // Skip external links and anchors
+        if (link.href.startsWith(window.location.origin) && !link.href.includes('#')) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetUrl = this.href;
+                triggerMeteorShower(() => {
+                    window.location.href = targetUrl;
+                });
+            });
+        }
+    });
+}
+
+function triggerMeteorShower(callback) {
+    const transition = document.getElementById('pageTransition');
+    transition.classList.add('active');
+    
+    // Create 20 meteors
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            createMeteor();
+        }, i * 50);
+    }
+    
+    // Navigate after meteors
+    setTimeout(() => {
+        if (callback) callback();
+    }, 1500);
+}
+
+function createMeteor() {
+    const meteor = document.createElement('div');
+    meteor.className = 'meteor';
+    
+    // Random starting position
+    meteor.style.top = `${Math.random() * 50}%`;
+    meteor.style.left = `${Math.random() * 100}%`;
+    
+    document.getElementById('pageTransition').appendChild(meteor);
+    
+    // Remove after animation
+    setTimeout(() => {
+        meteor.remove();
+    }, 1500);
+}
+
+// Theme Customization
+function initializeThemeSelector() {
+    // Create theme selector if it doesn't exist
+    const dashboard = document.getElementById('playerDashboard');
+    if (!document.getElementById('themeSelector')) {
+        const themeSection = document.createElement('div');
+        themeSection.className = 'dashboard-section theme-selector';
+        themeSection.id = 'themeSelector';
+        themeSection.innerHTML = `
+            <h4>🎨 Customize Your Theme</h4>
+            <div class="theme-options">
+                <button class="theme-btn" data-theme="default">Gold</button>
+                <button class="theme-btn" data-theme="crimson">Crimson</button>
+                <button class="theme-btn" data-theme="emerald">Emerald</button>
+                <button class="theme-btn" data-theme="sapphire">Sapphire</button>
+                <button class="theme-btn" data-theme="amethyst">Amethyst</button>
+                <button class="theme-btn" data-theme="silver">Silver</button>
+                <button class="theme-btn" data-theme="amber">Amber</button>
+                <button class="theme-btn" data-theme="rose">Rose</button>
+            </div>
+        `;
+        
+        // Insert after dashboard header
+        const header = document.querySelector('.dashboard-header');
+        header.after(themeSection);
+    }
+    
+    // Add event listeners
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            changeTheme(this.dataset.theme);
+        });
+    });
+    
+    // Load saved theme
+    loadUserTheme();
+}
+
+function changeTheme(themeName) {
+    document.body.setAttribute('data-theme', themeName);
+    
+    // Update active button
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`.theme-btn[data-theme="${themeName}"]`).classList.add('active');
+    
+    // Save preference
+    if (currentPlayer) {
+        localStorage.setItem(`${currentPlayer}_theme`, themeName);
+    }
+}
+
+function loadUserTheme() {
+    if (currentPlayer) {
+        const savedTheme = localStorage.getItem(`${currentPlayer}_theme`) || 'default';
+        changeTheme(savedTheme);
+    }
+}
+
+// Advanced Note Organization
+function initializeNoteManagers() {
+    const noteCategories = ['sessionNotes', 'inventoryNotes', 'relationshipNotes', 'theoriesNotes'];
+    
+    noteCategories.forEach(category => {
+        setupNoteManager(category);
+    });
+}
+
+function setupNoteManager(category) {
+    const section = document.querySelector(`#${category}`).closest('.dashboard-section');
+    
+    // Create note manager UI
+    const manager = document.createElement('div');
+    manager.className = 'notes-manager';
+    manager.innerHTML = `
+        <div class="new-note-form">
+            <input type="text" placeholder="Note title..." class="note-title-input" data-category="${category}">
+            <button class="save-button new-note-btn" data-category="${category}">➕ Create New Note</button>
+        </div>
+        <div class="saved-notes-list" id="${category}-list"></div>
+        <div class="note-editor" id="${category}-editor">
+            <div class="note-editor-header">
+                <span class="note-editor-title"></span>
+                <button class="close-editor-btn">✕ Close</button>
+            </div>
+            <textarea class="notes-area" id="${category}-editor-text"></textarea>
+            <button class="save-button save-edit-btn" data-category="${category}">💾 Save Changes</button>
+        </div>
+    `;
+    
+    const oldTextarea = document.getElementById(category);
+    const oldButton = document.querySelector(`#save${category.charAt(0).toUpperCase() + category.slice(1, -5)}Btn`);
+    if (oldTextarea) oldTextarea.remove();
+    if (oldButton) oldButton.remove();
+    
+    section.appendChild(manager);
+    
+    // Load existing notes
+    loadNotesList(category);
+    
+    // Event listeners
+    manager.querySelector('.new-note-btn').addEventListener('click', () => createNewNote(category));
+    manager.querySelector('.save-edit-btn').addEventListener('click', () => saveEditedNote(category));
+    manager.querySelector('.close-editor-btn').addEventListener('click', () => closeNoteEditor(category));
+}
+
+function createNewNote(category) {
+    const titleInput = document.querySelector(`.note-title-input[data-category="${category}"]`);
+    const title = titleInput.value.trim();
+    
+    if (!title) {
+        alert('Please enter a note title');
+        return;
+    }
+    
+    const noteId = Date.now();
+    const note = {
+        id: noteId,
+        title: title,
+        content: '',
+        date: new Date().toLocaleDateString(),
+        category: category
+    };
+    
+    saveNote(note);
+    titleInput.value = '';
+    loadNotesList(category);
+    editNote(category, noteId);
+}
+
+function saveNote(note) {
+    const storageKey = `${currentPlayer}_notes_${note.category}`;
+    let notes = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    
+    const existingIndex = notes.findIndex(n => n.id === note.id);
+    if (existingIndex >= 0) {
+        notes[existingIndex] = note;
+    } else {
+        notes.push(note);
+    }
+    
+    localStorage.setItem(storageKey, JSON.stringify(notes));
+}
+
+function loadNotesList(category) {
+    const storageKey = `${currentPlayer}_notes_${category}`;
+    const notes = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    const listContainer = document.getElementById(`${category}-list`);
+    
+    listContainer.innerHTML = '';
+    
+    notes.reverse().forEach(note => {
+        const noteItem = document.createElement('div');
+        noteItem.className = 'saved-note-item';
+        noteItem.innerHTML = `
+            <div class="saved-note-header">
+                <div class="saved-note-title">${note.title}</div>
+                <div class="saved-note-date">${note.date}</div>
+            </div>
+            <div class="saved-note-preview">${note.content.substring(0, 100)}${note.content.length > 100 ? '...' : ''}</div>
+            <div class="saved-note-actions">
+                <button class="note-action-btn" onclick="editNote('${category}', ${note.id})">✏️ Edit</button>
+                <button class="note-action-btn delete" onclick="deleteNote('${category}', ${note.id})">🗑️ Delete</button>
+            </div>
+        `;
+        listContainer.appendChild(noteItem);
+    });
+}
+
+function editNote(category, noteId) {
+    const storageKey = `${currentPlayer}_notes_${category}`;
+    const notes = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    const note = notes.find(n => n.id === noteId);
+    
+    if (note) {
+        const editor = document.getElementById(`${category}-editor`);
+        const editorText = document.getElementById(`${category}-editor-text`);
+        const editorTitle = editor.querySelector('.note-editor-title');
+        
+        editorTitle.textContent = note.title;
+        editorText.value = note.content;
+        editor.classList.add('active');
+        editor.dataset.noteId = noteId;
+        
+        // Hide list
+        document.getElementById(`${category}-list`).style.display = 'none';
+        document.querySelector(`.new-note-form`).style.display = 'none';
+    }
+}
+
+function saveEditedNote(category) {
+    const editor = document.getElementById(`${category}-editor`);
+    const noteId = parseInt(editor.dataset.noteId);
+    const content = document.getElementById(`${category}-editor-text`).value;
+    
+    const storageKey = `${currentPlayer}_notes_${category}`;
+    let notes = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    const note = notes.find(n => n.id === noteId);
+    
+    if (note) {
+        note.content = content;
+        note.date = new Date().toLocaleDateString();
+        localStorage.setItem(storageKey, JSON.stringify(notes));
+        
+        // Show success feedback
+        const saveBtn = editor.querySelector('.save-edit-btn');
+        const originalText = saveBtn.textContent;
+        saveBtn.textContent = '✓ Saved!';
+        saveBtn.style.background = 'rgba(74, 222, 128, 0.2)';
+        
+        setTimeout(() => {
+            saveBtn.textContent = originalText;
+            saveBtn.style.background = '';
+        }, 2000);
+        
+        loadNotesList(category);
+    }
+}
+
+function closeNoteEditor(category) {
+    const editor = document.getElementById(`${category}-editor`);
+    editor.classList.remove('active');
+    
+    // Show list again
+    document.getElementById(`${category}-list`).style.display = 'flex';
+    document.querySelector('.new-note-form').style.display = 'flex';
+}
+
+function deleteNote(category, noteId) {
+    if (!confirm('Are you sure you want to delete this note?')) return;
+    
+    const storageKey = `${currentPlayer}_notes_${category}`;
+    let notes = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    notes = notes.filter(n => n.id !== noteId);
+    localStorage.setItem(storageKey, JSON.stringify(notes));
+    
+    loadNotesList(category);
+}
+
+// Make functions globally available
+window.editNote = editNote;
+window.deleteNote = deleteNote;
+
 // Dice Roller Functions
 function initializeDiceRoller() {
     const diceBtns = document.querySelectorAll('.dice-btn');
@@ -278,7 +577,6 @@ function rollDice(diceType) {
     let rolls = [];
     let total = 0;
     
-    // Roll the dice
     for (let i = 0; i < count; i++) {
         const roll = Math.floor(Math.random() * diceSides) + 1;
         rolls.push(roll);
@@ -287,17 +585,13 @@ function rollDice(diceType) {
     
     const finalTotal = total + modifier;
     
-    // Animate the result
     animateDiceRoll(finalTotal);
     
-    // Display breakdown
     const breakdown = `${count}${diceType}: [${rolls.join(', ')}]${modifier !== 0 ? ` ${modifier >= 0 ? '+' : ''}${modifier}` : ''}`;
     document.getElementById('resultBreakdown').textContent = breakdown;
     
-    // Add to history
     addToHistory(diceType, count, modifier, finalTotal, rolls);
     
-    // Play sound effect (visual feedback)
     const resultDisplay = document.getElementById('diceResultDisplay');
     resultDisplay.classList.add('roll-animation');
     setTimeout(() => {
@@ -335,7 +629,6 @@ function addToHistory(diceType, count, modifier, result, rolls) {
         <span class="history-result">${result}</span>
     `;
     
-    // Add critical styling
     const diceSides = parseInt(diceType.substring(1));
     if (diceType === 'd20') {
         if (rolls.includes(20)) {
@@ -347,64 +640,9 @@ function addToHistory(diceType, count, modifier, result, rolls) {
     
     historyList.insertBefore(historyItem, historyList.firstChild);
     
-    // Keep only last 10 rolls
     while (historyList.children.length > 10) {
         historyList.removeChild(historyList.lastChild);
     }
-}
-
-// Note Saving Functions
-function setupNoteSaving(textareaId, buttonId) {
-    const textarea = document.getElementById(textareaId);
-    const button = document.getElementById(buttonId);
-    
-    if (textarea && button) {
-        button.addEventListener('click', function() {
-            saveNotes(textareaId);
-            showSaveStatus(button);
-        });
-    }
-}
-
-function saveNotes(textareaId) {
-    if (!currentPlayer) return;
-    
-    const textarea = document.getElementById(textareaId);
-    const content = textarea.value;
-    const storageKey = `${currentPlayer}_${textareaId}`;
-    
-    localStorage.setItem(storageKey, content);
-}
-
-function loadNotes() {
-    if (!currentPlayer) return;
-    
-    const textareas = ['sessionNotes', 'inventoryNotes', 'relationshipNotes', 'theoriesNotes'];
-    
-    textareas.forEach(textareaId => {
-        const textarea = document.getElementById(textareaId);
-        const storageKey = `${currentPlayer}_${textareaId}`;
-        const savedContent = localStorage.getItem(storageKey);
-        
-        if (savedContent && textarea) {
-            textarea.value = savedContent;
-        }
-    });
-}
-
-function showSaveStatus(button) {
-    const originalText = button.textContent;
-    button.textContent = '✓ Saved!';
-    button.style.background = 'rgba(74, 222, 128, 0.2)';
-    button.style.borderColor = '#4ade80';
-    button.style.color = '#4ade80';
-    
-    setTimeout(() => {
-        button.textContent = originalText;
-        button.style.background = '';
-        button.style.borderColor = '';
-        button.style.color = '';
-    }, 2000);
 }
 
 function populatePartyList() {
@@ -440,16 +678,8 @@ function hideError() {
     errorMessage.textContent = '';
 }
 
-// Auto-save every 30 seconds
-setInterval(() => {
-    if (currentPlayer) {
-        ['sessionNotes', 'inventoryNotes', 'relationshipNotes', 'theoriesNotes'].forEach(saveNotes);
-    }
-}, 30000);
-
 // Save before leaving
 window.addEventListener('beforeunload', function(e) {
-    if (currentPlayer) {
-        ['sessionNotes', 'inventoryNotes', 'relationshipNotes', 'theoriesNotes'].forEach(saveNotes);
-    }
 });
+
+
