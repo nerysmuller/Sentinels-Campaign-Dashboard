@@ -102,7 +102,7 @@ body {
     to { background-position: -10000px 5000px; }
 }
 
-/* Celestial Page Transition - Star Chart Themed */
+/* Celestial Page Transition - Full Page Sweep */
 .page-transition {
     position: fixed;
     top: 0;
@@ -112,53 +112,69 @@ body {
     pointer-events: none;
     z-index: 99999;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, rgba(10, 10, 15, 0.95) 70%);
+    transition: opacity 0.4s ease;
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 15, 0.98) 60%);
 }
 
 .page-transition.active {
     opacity: 1;
+    pointer-events: all;
 }
 
-/* Celestial constellation lines */
-.constellation-line {
+/* Smooth sweep beam effect */
+.sweep-beam {
     position: absolute;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
-    transform-origin: left center;
-    animation: drawLine 0.8s ease-out forwards;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(212, 175, 55, 0.05) 20%,
+        rgba(212, 175, 55, 0.2) 40%,
+        rgba(212, 175, 55, 0.4) 50%,
+        rgba(212, 175, 55, 0.2) 60%,
+        rgba(212, 175, 55, 0.05) 80%,
+        transparent 100%
+    );
+    animation: sweep 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes drawLine {
-    from {
-        width: 0;
-        opacity: 0;
+@keyframes sweep {
+    0% {
+        left: -100%;
     }
-    to {
-        width: 100%;
-        opacity: 1;
+    100% {
+        left: 100%;
     }
 }
 
-/* Celestial star points */
-.celestial-star {
+/* Star particles for transition */
+.star-particle {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(212, 175, 55, 0.8));
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(212, 175, 55, 0.9));
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 1);
-    animation: starPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    animation: particleFloat 1.2s ease-out forwards;
+    pointer-events: none;
 }
 
-@keyframes starPulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(0);
     }
-    50% {
-        transform: scale(1.5);
-        opacity: 0.7;
+    20% {
+        opacity: 1;
+        transform: scale(1) translateY(-20px);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1) translateY(-40px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-60px);
     }
 }
 
