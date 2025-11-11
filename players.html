@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="default">
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="shooting-stars"></div>
+    <div class="page-transition" id="pageTransition"></div>
     
     <header class="main-header">
         <div class="header-glow"></div>
@@ -71,7 +72,7 @@
             
             <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-glow); text-align: center;">
                 <p style="color: var(--text-dim); font-size: 0.9rem;">
-                    Forgot your password? Contact Nerys. She'll take care of it for ya'. Or not. Ya' dummy.<br>
+                    Forgot your password? Contact Nerys.<br>
                     <em>Default passwords are set to "sentinel" for testing.</em>
                 </p>
             </div>
@@ -86,14 +87,27 @@
             </div>
 
             <div class="dashboard-grid">
+                <!-- Theme Selector -->
+                <div class="dashboard-section theme-selector-section" style="grid-column: span 2;">
+                    <h3>Customize Your Theme</h3>
+                    <div class="theme-options">
+                        <button class="theme-btn active" data-theme="default">Gold</button>
+                        <button class="theme-btn" data-theme="crimson">Crimson</button>
+                        <button class="theme-btn" data-theme="emerald">Emerald</button>
+                        <button class="theme-btn" data-theme="sapphire">Sapphire</button>
+                        <button class="theme-btn" data-theme="amethyst">Amethyst</button>
+                        <button class="theme-btn" data-theme="silver">Silver</button>
+                        <button class="theme-btn" data-theme="amber">Amber</button>
+                        <button class="theme-btn" data-theme="rose">Rose</button>
+                    </div>
+                </div>
+
                 <!-- Character Sheet Display -->
                 <div class="dashboard-section" style="grid-column: span 2;">
                     <h3>Character Sheet</h3>
                     
-                    <!-- Character Stats Grid -->
                     <div class="character-sheet-container">
                         <div class="stat-grid">
-                            <!-- Basic Info -->
                             <div class="stat-card large-card">
                                 <h4>Character Info</h4>
                                 <div class="stat-info">
@@ -105,7 +119,6 @@
                                 </div>
                             </div>
 
-                            <!-- HP & AC -->
                             <div class="stat-card hp-card">
                                 <h4>Hit Points</h4>
                                 <div class="hp-display">
@@ -123,7 +136,6 @@
                                 <div class="ac-display" id="armorClass">--</div>
                             </div>
 
-                            <!-- Ability Scores -->
                             <div class="stat-card ability-scores">
                                 <h4>Ability Scores</h4>
                                 <div class="abilities-grid">
@@ -160,24 +172,17 @@
                                 </div>
                             </div>
 
-                            <!-- Attacks -->
                             <div class="stat-card attacks-card">
                                 <h4>Attacks</h4>
-                                <div id="attacksList" class="attacks-list">
-                                    <!-- Populated by JavaScript -->
-                                </div>
+                                <div id="attacksList" class="attacks-list"></div>
                             </div>
 
-                            <!-- Proficiencies -->
                             <div class="stat-card proficiencies-card">
                                 <h4>Proficiencies</h4>
-                                <div id="proficienciesList" class="proficiencies-list">
-                                    <!-- Populated by JavaScript -->
-                                </div>
+                                <div id="proficienciesList" class="proficiencies-list"></div>
                             </div>
                         </div>
 
-                        <!-- D&D Beyond Link -->
                         <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-glow);">
                             <a href="#" id="dndBeyondLink" class="card-button" target="_blank">
                                 View Full Sheet on D&D Beyond
@@ -225,41 +230,18 @@
                 </div>
 
                 <!-- Session Notes -->
-                <div class="dashboard-section">
+                <div class="dashboard-section" id="sessionNotesSection">
                     <h3>Session Notes</h3>
-                    <p style="color: var(--text-dim); margin-bottom: 15px; font-size: 0.9rem;">
-                        Record your thoughts, plans, and observations here.
-                    </p>
-                    <textarea 
-                        class="notes-area" 
-                        id="sessionNotes" 
-                        placeholder="What happened this session? What do you plan to do next?"
-                    ></textarea>
-                    <button class="save-button" id="saveNotesBtn">Save Notes</button>
                 </div>
 
                 <!-- Inventory Tracker -->
-                <div class="dashboard-section">
+                <div class="dashboard-section" id="inventoryNotesSection">
                     <h3>Important Items</h3>
-                    <textarea 
-                        class="notes-area" 
-                        id="inventoryNotes"
-                        style="min-height: 150px;"
-                        placeholder="Track important quest items and magical artifacts..."
-                    ></textarea>
-                    <button class="save-button" id="saveInventoryBtn">Save Inventory</button>
                 </div>
 
                 <!-- Relationships & Factions -->
-                <div class="dashboard-section">
+                <div class="dashboard-section" id="relationshipNotesSection">
                     <h3>Relationships</h3>
-                    <textarea 
-                        class="notes-area" 
-                        id="relationshipNotes"
-                        style="min-height: 150px;"
-                        placeholder="Track your relationships with NPCs and factions..."
-                    ></textarea>
-                    <button class="save-button" id="saveRelationshipsBtn">Save Relationships</button>
                 </div>
 
                 <!-- Party Information -->
@@ -269,20 +251,13 @@
                         <p style="color: var(--text-dim); margin-bottom: 15px;">
                             Fellow Sentinels:
                         </p>
-                        <div id="partyList" style="display: flex; flex-direction: column; gap: 10px;">
-                        </div>
+                        <div id="partyList" style="display: flex; flex-direction: column; gap: 10px;"></div>
                     </div>
                 </div>
 
                 <!-- Theories & Mysteries -->
-                <div class="dashboard-section" style="grid-column: span 2;">
+                <div class="dashboard-section" id="theoriesNotesSection" style="grid-column: span 2;">
                     <h3>Theories & Mysteries</h3>
-                    <textarea 
-                        class="notes-area" 
-                        id="theoriesNotes"
-                        placeholder="What secrets have you uncovered? What mysteries remain unsolved?"
-                    ></textarea>
-                    <button class="save-button" id="saveTheoriesBtn">Save Theories</button>
                 </div>
             </div>
 
@@ -302,5 +277,3 @@
     <script src="player-script.js"></script>
 </body>
 </html>
-
-
