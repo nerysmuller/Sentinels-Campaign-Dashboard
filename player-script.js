@@ -2,102 +2,105 @@
 const playerData = {
     player1: {
         name: "Althaea Liadon",
-        class: "Druid 7",
-        password: "sentinel",
-        dndBeyondCharacterId: "123456789",
+        class: "Cleric",
+        password: "altlovesast",
+        dndBeyondCharacterId: "141783747",
         fallbackData: {
             race: "Half-Elf",
-            level: 7,
-            background: "Sage",
+            level: 6,
+            background: "Noble",
             hp: { current: 51, max: 51 },
             ac: 18,
-            abilities: { str: 13, dex: 15, con: 13, int: 10, wis: 19, cha: 16 },
+            abilities: { str: 13, dex: 15, con: 17, int: 13, wis: 19, cha: 16 },
             attacks: [
-                { name: "Handflame", bonus: 7, damage: "1d10+4 fire" },
-                { name: "Inflict Wounds", bonus: 7, damage: "3d10 necrotic" },
-                { name: "Guiding Bolt", bonus: 7, damage: "4d6 radiant" },
-                { name: "Fallen Wounds", bonus: 0, damage: "1d8+0 psychic" }
+                { name: "Bloodbane", bonus: 4, damage: "1d8+1 slashing" },
+                { name: "Dagger", bonus: 5, damage: "1d4+2 piercing" },
+                { name: "Guiding Bolt", bonus: 7, damage: "4d6+0 radiant" },
+                { name: "Inflict Wounds", bonus: 7, damage: "3d10+0 necrotic" }
             ],
             proficiencies: {
-                languages: ["Common", "Elvish", "Celestial", "Draconic"],
+                languages: ["Celestial", "Common", "Draconic", "Elvish"],
                 weapons: ["Simple Weapons", "Martial Weapons"],
                 tools: ["Playing Card Set"],
-                armor: ["Light Armor", "Medium Armor", "Shields"]
+                armor: ["Light Armor", "Medium Armor", "Heavy Armor", "Shields"]
             }
         }
     },
     player2: {
         name: "Artyom Tonare",
-        class: "Cleric 7",
-        password: "sentinel",
-        dndBeyondCharacterId: "123456790",
+        class: "Barbarian",
+        password: "LiveLaughGleeba",
+        dndBeyondCharacterId: "139724008",
         fallbackData: {
-            race: "Tiefling",
-            level: 7,
-            background: "Acolyte",
-            hp: { current: 46, max: 46 },
+            race: "Dragonborn",
+            level: 6,
+            background: "Mercenary Veteran",
+            hp: { current: 84, max: 84 },
             ac: 18,
-            abilities: { str: 12, dex: 16, con: 13, int: 10, wis: 18, cha: 14 },
+            abilities: { str: 20, dex: 18, con: 18, int: 13, wis: 10, cha: 13 },
             attacks: [
-                { name: "Guiding Bolt", bonus: 7, damage: "4d6 radiant" },
-                { name: "Sacred Flame", bonus: 7, damage: "2d8 radiant" },
-                { name: "Rapier", bonus: 4, damage: "1d8+3 piercing" }
+                { name: "Handaxe", bonus: 8, damage: "1d6+5 slashing" },
+                { name: "Javelin of Mistry Step", bonus: 9, damage: "1d6+6 piercing" },
+                { name: "Maul", bonus: 8, damage: "2d6+5 bludgeoning" },
+                { name: "Breath Weapon", bonus: 0, damage: "2d10+0 thunder" }
             ],
             proficiencies: {
-                languages: ["Common", "Infernal", "Celestial"],
-                weapons: ["Simple Weapons", "Rapier"],
-                tools: ["None"],
-                armor: ["Light Armor", "Medium Armor", "Heavy Armor", "Shields"]
+                languages: ["Common", "Draconic", "Telepathy (30 ft.)"],
+                weapons: ["Simple Weapons", "Martial Weapons"],
+                tools: ["Dragonchess Set", "Vehicles (Land)"],
+                armor: ["Light Armor", "Medium Armor", "Shields"]
             }
         }
     },
     player3: {
         name: "Kova Liadon",
         class: "Ranger 7",
-        password: "sentinel",
-        dndBeyondCharacterId: "123456791",
+        password: "Swarley",
+        dndBeyondCharacterId: "141783776",
         fallbackData: {
-            race: "Half-Elf",
-            level: 7,
-            background: "Outlander",
-            hp: { current: 56, max: 56 },
-            ac: 17,
-            abilities: { str: 16, dex: 18, con: 14, int: 10, wis: 15, cha: 12 },
+            race: "High Elf",
+            level: 6,
+            background: "Noble",
+            hp: { current: 52, max: 52 },
+            ac: 14,
+            abilities: { str: 15, dex: 15, con: 14, int: 12, wis: 20, cha: 13 },
             attacks: [
-                { name: "Longbow", bonus: 7, damage: "1d8+4 piercing" },
-                { name: "Longsword", bonus: 6, damage: "1d8+3 slashing" },
-                { name: "Hunter's Mark", bonus: 7, damage: "+1d6" }
+                { name: "Longbow", bonus: 7, damage: "1d8+2 piercing" },
+                { name: "Shortsword", bonus: 5, damage: "1d6+2 piercing" },
+                { name: "Unarmed Strike", bonus: 5, damage: "1d8+3 bludgeoning" },
+                { name: "Hunter's Mark", bonus: 0, damage: "+1d6 force" }
             ],
             proficiencies: {
-                languages: ["Common", "Elvish", "Sylvan"],
+                languages: ["Celestial", "Common", "Common Sign Language","Dwarvish","Elvish","Sylvan"],
                 weapons: ["Simple Weapons", "Martial Weapons"],
-                tools: ["None"],
+                tools: ["Playing Card Set"],
                 armor: ["Light Armor", "Medium Armor", "Shields"]
             }
         }
     },
     player4: {
         name: "Trevor Adrieth",
-        class: "Rogue 7",
-        password: "sentinel",
-        dndBeyondCharacterId: "123456792",
+        class: "Paladin",
+        password: "TrevorRocks856",
+        dndBeyondCharacterId: "138489091",
         fallbackData: {
-            race: "Human",
-            level: 7,
-            background: "Criminal",
-            hp: { current: 45, max: 45 },
-            ac: 16,
-            abilities: { str: 10, dex: 20, con: 12, int: 14, wis: 13, cha: 10 },
+            race: "Half-Elf",
+            level: 6,
+            background: "Soldier",
+            hp: { current: 52, max: 52 },
+            ac: 18,
+            abilities: { str: 19, dex: 15, con: 14, int: 10, wis: 10, cha: 14 },
             attacks: [
-                { name: "Rapier", bonus: 8, damage: "1d8+5 piercing" },
-                { name: "Shortbow", bonus: 8, damage: "1d6+5 piercing" },
-                { name: "Sneak Attack", bonus: 0, damage: "+4d6" }
+                { name: "Sun Blade", bonus: 8, damage: "1d8+7 radiant" },
+                { name: "Longbow", bonus: 5, damage: "1d8+2 piercing" },
+                { name: "Longsword", bonus: 7, damage: "1d8+6 slashing" },
+                { name: "Divine Smite", bonus: 0, damage: "+2d8" }
             ],
             proficiencies: {
-                languages: ["Common", "Thieves' Cant"],
-                weapons: ["Simple Weapons", "Hand Crossbows", "Longswords", "Rapiers", "Shortswords"],
-                tools: ["Thieves' Tools", "Disguise Kit"],
-                armor: ["Light Armor"]
+                languages: ["Common", "Dwarvish", "Elvish"],
+                weapons: ["Simple Weapons", "Martial Weapons", "Longswords"],
+                tools: ["Playing Card Set", "Vehicles (Land)"],
+                armor: ["Light Armor", "Medium Armor", "Heavy Armor", "Shields"]
             }
         }
     }
