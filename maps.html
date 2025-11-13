@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps - The Protectorate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="shooting-stars"></div>
+    <div class="page-transition" id="pageTransition"></div>
+    
+    <header class="main-header">
+        <div class="header-glow"></div>
+        <h1 class="title-main">Sentinels to the Starry Skies</h1>
+        <p class="subtitle">World Maps & Geography</p>
+        <div class="divider"></div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html" class="nav-link">
+            <span class="nav-icon"></span>
+            <span>Home</span>
+        </a>
+        <a href="lore.html" class="nav-link">
+            <span class="nav-icon"></span>
+            <span>Lore</span>
+        </a>
+        <a href="characters.html" class="nav-link">
+            <span class="nav-icon"></span>
+            <span>Characters</span>
+        </a>
+        <a href="locations.html" class="nav-link">
+            <span class="nav-icon"></span>
+            <span>Locations</span>
+        </a>
+        <a href="maps.html" class="nav-link active">
+            <span class="nav-icon"></span>
+            <span>Maps</span>
+        </a>
+        <a href="players.html" class="nav-link special">
+            <span class="nav-icon"></span>
+            <span>Player Hub</span>
+        </a>
+    </nav>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>Charting The Protectorate</h2>
+            <p>
+                The world of Dragon Quest IX spans diverse continents, from the celestial Observatory above to the mortal 
+                kingdoms below. These maps chronicle your journey as Sentinels gathering benevolessence across The Protectorate.
+            </p>
+            <p>
+                <strong>Note:</strong> Maps will be updated as you discover new locations. Current progress shows your path 
+                from Angel Falls through Stornway to your current destination at Zere.
+            </p>
+        </section>
+
+        <div class="map-container">
+            <h3> The Protectorate - Full World Map</h3>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">
+                The known world, showing the mortal realm beneath the Observatory. Based on Dragon Quest IX: Sentinels of the Starry Skies.
+            </p>
+            <div style="background: rgba(10,10,15,0.8); padding: 40px; border: 2px solid var(--accent-gold); border-radius: 8px;">
+                <img src="overworld_with_labels.webp" alt="The Protectorate World Map" class="map-image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 30px rgba(0,0,0,0.8);">
+                <p style="color: var(--text-dim); text-align: center; margin-top: 20px; font-size: 0.9rem;">
+                    The complete world of Althelas - The Protectorate
+                </p>
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <p style="color: var(--accent-gold); font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 20px;">
+                         THE OBSERVATORY 
+                    </p>
+                    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 10px;">
+                        (Fallen from the sky - now in the mortal realm)
+                    </p>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">
+                        ↓ Starflight Express (inactive) ↓
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+                    <div>
+                        <h4 style="color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 15px; text-align: center;">
+                            WESTERN REGIONS
+                        </h4>
+                        <div style="color: var(--text-light); line-height: 2;">
+                            <strong style="color: var(--accent-gold);">Angel Falls</strong> (Starting Point)<br>
+                            <span style="color: var(--text-dim);">→ South-central region</span><br><br>
+                            
+                            <strong>The Hexagon</strong><br>
+                            <span style="color: var(--text-dim);">→ West of Angel Falls</span><br><br>
+                            
+                            <strong>Alltrades Abbey</strong><br>
+                            <span style="color: var(--text-dim);">→ Northwest (vocation changes)</span><br><br>
+                            
+                            <strong>Western Stornway</strong><br>
+                            <span style="color: var(--text-dim);">→ Mountain pass region</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 15px; text-align: center;">
+                            CENTRAL & EASTERN REGIONS
+                        </h4>
+                        <div style="color: var(--text-light); line-height: 2;">
+                            <strong style="color: var(--accent-gold);">Stornway</strong> (Recently Visited)<br>
+                            <span style="color: var(--text-dim);">→ East of Angel Falls</span><br><br>
+                            
+                            <strong style="color: var(--accent-gold);">Loch Storn</strong> (Wight Knight Battle)<br>
+                            <span style="color: var(--text-dim);">→ North of Stornway</span><br><br>
+                            
+                            <strong style="color: var(--accent-gold); text-decoration: underline;">Zere</strong> (CURRENT DESTINATION)<br>
+                            <span style="color: var(--text-dim);">→ Northwest of Loch Storn</span><br><br>
+                            
+                            <strong style="color: var(--accent-purple);">Doomingale Forest</strong> (Next)<br>
+                            <span style="color: var(--text-dim);">→ North of Zere</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-glow);">
+                    <h4 style="color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 15px; text-align: center;">
+                        LOCATIONS YET TO EXPLORE
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; color: var(--text-dim);">
+                        <div>• Coffinwell (East)</div>
+                        <div>• Gleeba (Southeast)</div>
+                        <div>• Swinedimples Academy (North)</div>
+                        <div>• Batsureg (Far East)</div>
+                        <div>• Bloomingdale (Central)</div>
+                        <div>• Dourbridge (South)</div>
+                        <div>• Upover (Sky Islands)</div>
+                        <div>• Gittingham Palace (Empire)</div>
+                        <div>• Realm of the Mighty (Divine)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h3>🧭 Your Journey So Far</h3>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">
+                Tracking the Sentinels' path from the Observatory's fall to your current quest.
+            </p>
+            <div style="background: linear-gradient(180deg, rgba(139,92,246,0.1) 0%, rgba(10,10,15,0.9) 100%); padding: 40px; border: 2px solid var(--accent-purple); border-radius: 8px;">
+                <div style="color: var(--text-light); line-height: 2.5; font-size: 1.05rem;">
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: var(--accent-gold); font-size: 1.5rem;"></span>
+                        <strong style="color: var(--accent-gold);"> The Observatory</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Fell from the sky → Lost your wings and halo
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: #4ade80; font-size: 1.5rem;">✓</span>
+                        <strong style="color: var(--text-light);"> Angel Falls</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Awakened as a mortal → Met Stella
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: #4ade80; font-size: 1.5rem;">✓</span>
+                        <strong style="color: var(--text-light);"> Stornway</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Met King Schott → Formed party → Accepted Wight Knight quest
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: #4ade80; font-size: 1.5rem;">✓</span>
+                        <strong style="color: var(--text-light);"> Loch Storn</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Defeated the Wight Knight → Learned his tragic story
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: #4ade80; font-size: 1.5rem;">✓</span>
+                        <strong style="color: var(--text-light);"> Returned to Stornway</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Reported to King → Treasury unlocked → Quest from Princess Simona
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--accent-gold); font-size: 1.2rem;">↓</div>
+                    
+                    <div style="margin-bottom: 20px; padding: 20px; background: rgba(212,175,55,0.1); border-left: 4px solid var(--accent-gold); border-radius: 4px;">
+                        <span style="color: var(--accent-gold); font-size: 1.5rem;">→</span>
+                        <strong style="color: var(--accent-gold);"> Zere (CURRENT)</strong>
+                        <span style="color: var(--text-light); display: block; margin-left: 35px; font-size: 0.95rem; margin-top: 10px;">
+                            <strong>Objective:</strong> Find Alanna (Princess Simona's old nanny)<br>
+                            <strong>Goal:</strong> Learn the nursery rhyme "The Right Knight"<br>
+                            <strong>Info:</strong> Song reveals Brigadoom's location
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: var(--accent-purple); font-size: 1.5rem;">⚠</span>
+                        <strong style="color: var(--accent-purple);"> After Zere: Encounter Wight Knight Again</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Tell him about Brigadoom → He rushes ahead
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: var(--accent-purple); font-size: 1.5rem;">⚠</span>
+                        <strong style="color: var(--accent-purple);"> Doomingale Forest</strong>
+                        <span style="color: var(--text-dim); display: block; margin-left: 35px; font-size: 0.9rem;">
+                            Navigate through poison swamps → Find Brigadoom ruins
+                        </span>
+                    </div>
+                    
+                    <div style="margin-left: 20px; color: var(--text-dim);">↓</div>
+                    
+                    <div style="padding: 20px; background: rgba(220,38,38,0.1); border-left: 4px solid var(--accent-red); border-radius: 4px;">
+                        <span style="color: var(--accent-red); font-size: 1.5rem;">💀</span>
+                        <strong style="color: var(--accent-red);"> Brigadoom Throne Room - BOSS FIGHT</strong>
+                        <span style="color: var(--text-light); display: block; margin-left: 35px; font-size: 0.95rem; margin-top: 10px;">
+                            <strong>Enemy:</strong> Morag (Demoness)<br>
+                            <strong>Abilities:</strong> Puff-Puff (Charm), HP Hoover, Heal, Eye Attacks<br>
+                            <strong>Reward:</strong> Princess Mona's benevolessence<br>
+                            <strong>Story:</strong> Witness the Right Knight's final moments
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h3>🌍 Regional Map - Stornway to Zere</h3>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">
+                Detailed view of your current region showing the path from Stornway to Zere.
+            </p>
+            <div style="background: rgba(10,10,15,0.8); padding: 40px; border: 1px solid var(--border-glow); border-radius: 8px;">
+                <div style="text-align: center; font-family: monospace; color: var(--text-light); line-height: 1.8; font-size: 0.95rem;">
+                    <pre style="color: var(--text-light); margin: 0;">
+                    
+                    <span style="color: var(--accent-purple);">═══════════════════════════════════</span>
+                    <span style="color: var(--accent-purple);">║  DOOMINGALE FOREST (UPCOMING)  ║</span>
+                    <span style="color: var(--accent-purple);">║     [Brigadoom Ruins 💀]        ║</span>
+                    <span style="color: var(--accent-purple);">═══════════════════════════════════</span>
+                                    ↑
+                                    │
+                                    │ North
+                                    │
+                    <span style="color: var(--accent-gold);">┌──────────────────────────┐</span>
+                    <span style="color: var(--accent-gold);">│    🌸 ZERE 🌸           │</span>
+                    <span style="color: var(--accent-gold);">│   (Heart-Shaped Town)    │</span>
+                    <span style="color: var(--accent-gold);">│  → Find Alanna! ←       │</span>
+                    <span style="color: var(--accent-gold);">└──────────────────────────┘</span>
+                                    ↑
+                                    │ Northwest
+                                    │
+                    <span style="color: #4ade80);">┌──────────────────────────┐</span>
+                    <span style="color: #4ade80);">│   🌊 LOCH STORN 🌊      │</span>
+                    <span style="color: #4ade80);">│  (Wight Knight Battle)   │</span>
+                    <span style="color: #4ade80);">│      ✓ Defeated          │</span>
+                    <span style="color: #4ade80);">└──────────────────────────┘</span>
+                                    ↑
+                                    │ North
+                                    │
+                    <span style="color: #4ade80);">┌──────────────────────────┐</span>
+                    <span style="color: #4ade80);">│    STORNWAY         │</span>
+                    <span style="color: #4ade80);">│  (Kingdom Capital)       │</span>
+                    <span style="color: #4ade80);">│   ✓ Quest Complete       │</span>
+                    <span style="color: #4ade80);">└──────────────────────────┘</span>
+                                    ↑
+                            Western Stornway
+                                Mountain Pass
+                                    ↑
+                    <span style="color: #4ade80);">┌──────────────────────────┐</span>
+                    <span style="color: #4ade80);">│  🏔️ ANGEL FALLS 🏔️     │</span>
+                    <span style="color: #4ade80);">│   (Starting Village)     │</span>
+                    <span style="color: #4ade80);">└──────────────────────────┘</span>
+                    </pre>
+                </div>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-glow);">
+                    <h4 style="color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 15px;">
+                        Travel Information
+                    </h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; color: var(--text-light);">
+                        <div>
+                            <strong style="color: var(--accent-gold);">Stornway → Loch Storn</strong><br>
+                            <span style="color: var(--text-dim);">Direction: North<br>Time: Short journey<br>Terrain: Safe path</span>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-gold);">Loch Storn → Zere</strong><br>
+                            <span style="color: var(--text-dim);">Direction: Northwest<br>Time: Short journey<br>Terrain: Safe path</span>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-purple);">Zere → Doomingale</strong><br>
+                            <span style="color: var(--text-dim);">Direction: North<br>Time: Moderate<br>Terrain: Dangerous forest</span>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-red);">Doomingale → Brigadoom</strong><br>
+                            <span style="color: var(--text-dim);">Direction: Center of forest<br>Time: Long (dungeon)<br>Terrain: Ruins, poison swamps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h3>☁️ The Realm Above - Celestial Geography</h3>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">
+                The divine realms that exist above the mortal world.
+            </p>
+            <div style="background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, rgba(10,10,15,0.9) 100%); padding: 30px; border: 2px solid var(--accent-gold); border-radius: 8px;">
+                <div style="color: var(--text-light); line-height: 2;">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h4 style="color: var(--accent-gold); font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 15px;">
+                             THE REALM OF THE ALMIGHTY 
+                        </h4>
+                        <p style="color: var(--text-dim); font-size: 0.95rem;">
+                            The highest divine realm. Current status: Unknown
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 30px 0; color: var(--text-dim);">↕ Connected by divine power ↕</div>
+                    
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h4 style="color: var(--accent-blue); font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">
+                             THE OBSERVATORY 
+                        </h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px;">
+                            Home of the Celestrians
+                        </p>
+                        <p style="color: var(--accent-red); font-size: 0.9rem; font-style: italic;">
+                            STATUS: Fallen to mortal realm after Gittish attack
+                        </p>
+                        <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 10px;">
+                            The Starflight Express can return you here once enough benevolessence is gathered
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 30px 0; color: var(--text-dim);">↓ Fallen ↓</div>
+                    
+                    <div style="text-align: center;">
+                        <h4 style="color: var(--accent-purple); font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">
+                            🌍 THE MORTAL REALM 🌍
+                        </h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">
+                            The Protectorate - Where mortals dwell<br>
+                            Where you must gather benevolessence to return home
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h3> Fast Travel & Zoom Locations</h3>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">
+                Locations you can Zoom to once visited (will update as you discover new places).
+            </p>
+            <div style="background: rgba(26,26,46,0.8); padding: 30px; border: 1px solid var(--accent-blue); border-radius: 8px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; color: var(--text-light);">
+                    <div style="padding: 15px; background: rgba(74,222,128,0.1); border-left: 3px solid #4ade80; border-radius: 4px;">
+                        <strong style="color: #4ade80;">✓ Angel Falls</strong><br>
+                        <span style="color: var(--text-dim); font-size: 0.9rem;">Starting village</span>
+                    </div>
+                    
+                    <div style="padding: 15px; background: rgba(74,222,128,0.1); border-left: 3px solid #4ade80; border-radius: 4px;">
+                        <strong style="color: #4ade80;">✓ Stornway</strong><br>
+                        <span style="color: var(--text-dim); font-size: 0.9rem;">Kingdom capital</span>
+                    </div>
+                    
+                    <div style="padding: 15px; background: rgba(212,175,55,0.1); border-left: 3px solid var(--accent-gold); border-radius: 4px;">
+                        <strong style="color: var(--accent-gold);">→ Zere</strong><br>
+                        <span style="color: var(--text-dim); font-size: 0.9rem;">Will unlock after visit</span>
+                    </div>
+                    
+                    <div style="padding: 15px; background: rgba(161,161,170,0.1); border-left: 3px solid #a1a1aa; border-radius: 4px;">
+                        <strong style="color: #a1a1aa;">? Future Locations</strong><br>
+                        <span style="color: var(--text-dim); font-size: 0.9rem;">Discover to unlock</span>
+                    </div>
+                </div>
+                
+                <p style="color: var(--text-dim); margin-top: 25px; font-size: 0.9rem; font-style: italic; text-align: center;">
+                    Use Zoom or Chimaera Wings to fast travel between discovered locations
+                </p>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>Cartographer's Notes</h2>
+            <p>
+                The Protectorate is a vast world with many secrets yet to discover. As you gather benevolessence and help 
+                the people of the realm, new locations will open to you. Some places are hidden, others guarded by powerful 
+                enemies, and still others exist in different dimensions accessible only through special means.
+            </p>
+            <p>
+                The Gittish Empire's attack on the Observatory has changed the world. Divine barriers have weakened, ancient 
+                evils stir, and the fate of both the mortal and celestial realms hangs in the balance. Your journey as 
+                Sentinels will take you across all corners of The Protectorate—and perhaps beyond.
+            </p>
+            
+            <div style="background: rgba(139,92,246,0.1); padding: 25px; border: 1px solid var(--accent-purple); border-radius: 8px; margin-top: 30px;">
+                <h3 style="color: var(--accent-purple); font-family: 'Cinzel', serif; margin-bottom: 15px;">
+                    💫 Special Locations
+                </h3>
+                <p style="color: var(--text-light); line-height: 1.8;">
+                    <strong>Grottos:</strong> Hidden dungeons that appear across the world. Access them using Treasure Maps 
+                    dropped by monsters. Each grotto is unique and resets after completion.<br><br>
+                    
+                    <strong>Quester's Rest Inn:</strong> Has a Tag Mode feature allowing you to connect with other travelers 
+                    and exchange guests for your inn.<br><br>
+                    
+                    <strong>The Starflight Express:</strong> Your means of returning to the Observatory. Currently requires 
+                    more benevolessence to activate.<br><br>
+                    
+                    <strong>Alltrades Abbey:</strong> Change your vocation here. A crucial location for developing your skills.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>DM's Map Notes</h2>
+            <p style="font-style: italic; color: var(--accent-gold);">
+                Maps will be updated as the party progresses. Future additions will include:
+            </p>
+            <ul style="color: var(--text-dim); margin-left: 30px; margin-top: 15px; line-height: 2;">
+                <li>Detailed dungeon maps for Brigadoom and other locations</li>
+                <li>Regional maps for new areas (Coffinwell, Gleeba, etc.)</li>
+                <li>Grotto entrance locations as discovered</li>
+                <li>Quest-specific location markers</li>
+                <li>Custom map images (can be added as the campaign progresses)</li>
+            </ul>
+            <p style="text-align: center; margin-top: 30px; color: var(--text-dim);">
+                Safe travels, Sentinels. May the stars guide your path.
+            </p>
+            <p style="text-align: center; margin-top: 10px; color: var(--text-dim);">
+                - Nerys
+            </p>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>The Protectorate Campaign | DM: Nerys Muller</p>
+        <p class="footer-quote">"Not all who wander are lost, but many who are lost should have brought a map."</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
