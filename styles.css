@@ -1,3 +1,4 @@
+/* Root Variables */
 :root {
     --primary-dark: #0a0a0f;
     --secondary-dark: #1a1a2e;
@@ -10,13 +11,18 @@
     --border-glow: rgba(212, 175, 55, 0.3);
     --sky-color-1: #0a0a0f;
     --sky-color-2: #1a1a2e;
+    --theme-accent-1: #d4af37;
+    --theme-accent-2: #b8941e;
 }
 
+/* Theme Sky Colors & Accent Colors - Changes EVERYTHING based on theme */
 body[data-theme="default"] {
     --sky-color-1: #0a0a0f;
     --sky-color-2: #1a1a2e;
     --theme-accent-1: #ffd700;
     --theme-accent-2: #d4af37;
+    --border-glow: rgba(255, 215, 0, 0.3);
+    --accent-gold: #ffd700;
 }
 
 body[data-theme="crimson"] {
@@ -24,6 +30,8 @@ body[data-theme="crimson"] {
     --sky-color-2: #2e0a0a;
     --theme-accent-1: #ff1744;
     --theme-accent-2: #c62828;
+    --border-glow: rgba(255, 23, 68, 0.3);
+    --accent-gold: #ff1744;
 }
 
 body[data-theme="emerald"] {
@@ -31,6 +39,8 @@ body[data-theme="emerald"] {
     --sky-color-2: #0a2e15;
     --theme-accent-1: #00e676;
     --theme-accent-2: #00c853;
+    --border-glow: rgba(0, 230, 118, 0.3);
+    --accent-gold: #00e676;
 }
 
 body[data-theme="sapphire"] {
@@ -38,6 +48,8 @@ body[data-theme="sapphire"] {
     --sky-color-2: #0a152e;
     --theme-accent-1: #2979ff;
     --theme-accent-2: #1565c0;
+    --border-glow: rgba(41, 121, 255, 0.3);
+    --accent-gold: #2979ff;
 }
 
 body[data-theme="amethyst"] {
@@ -45,6 +57,8 @@ body[data-theme="amethyst"] {
     --sky-color-2: #1a0a2e;
     --theme-accent-1: #d500f9;
     --theme-accent-2: #9c27b0;
+    --border-glow: rgba(213, 0, 249, 0.3);
+    --accent-gold: #d500f9;
 }
 
 body[data-theme="silver"] {
@@ -52,10 +66,27 @@ body[data-theme="silver"] {
     --sky-color-2: #1a1a23;
     --theme-accent-1: #e0e0e0;
     --theme-accent-2: #9e9e9e;
+    --border-glow: rgba(224, 224, 224, 0.3);
+    --accent-gold: #e0e0e0;
 }
 
 body[data-theme="amber"] {
     --sky-color-1: #1a0f05;
+    --sky-color-2: #2e1a0a;
+    --theme-accent-1: #ffab00;
+    --theme-accent-2: #ff6f00;
+    --border-glow: rgba(255, 171, 0, 0.3);
+    --accent-gold: #ffab00;
+}
+
+body[data-theme="rose"] {
+    --sky-color-1: #1a050f;
+    --sky-color-2: #2e0a1a;
+    --theme-accent-1: #ff4081;
+    --theme-accent-2: #f50057;
+    --border-glow: rgba(255, 64, 129, 0.3);
+    --accent-gold: #ff4081;
+}
     --sky-color-2: #2e1a0a;
     --theme-accent-1: #ffab00;
     --theme-accent-2: #ff6f00;
@@ -68,6 +99,7 @@ body[data-theme="rose"] {
     --theme-accent-2: #f50057;
 }
 
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -85,6 +117,7 @@ body {
     transition: background 0.8s ease;
 }
 
+/* Twinkling Stars Background */
 .stars, .twinkling {
     position: fixed;
     top: 0;
@@ -114,6 +147,7 @@ body {
     to { background-position: -10000px 5000px; }
 }
 
+/* Shooting Stars Layer */
 .shooting-stars {
     position: fixed;
     top: 0;
@@ -162,6 +196,7 @@ body {
     }
 }
 
+/* Celestial Page Transition - Full Page Sweep */
 .page-transition {
     position: fixed;
     top: 0;
@@ -180,6 +215,7 @@ body {
     pointer-events: all;
 }
 
+/* Smooth sweep beam effect */
 .sweep-beam {
     position: absolute;
     top: 0;
@@ -207,6 +243,7 @@ body {
     }
 }
 
+/* Star particles for transition */
 .star-particle {
     position: absolute;
     background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(212, 175, 55, 0.9));
@@ -235,6 +272,7 @@ body {
     }
 }
 
+/* Shimmer effect for gold accents */
 @keyframes shimmer {
     0% {
         background-position: -200% center;
@@ -264,11 +302,13 @@ body {
     animation: shimmer 3s linear infinite;
 }
 
+/* Navigation active state - NO transparent text */
 .nav-link.active {
     color: var(--accent-gold) !important;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
 }
 
+/* Container */
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -277,6 +317,7 @@ body {
     z-index: 10;
 }
 
+/* Header */
 .main-header {
     text-align: center;
     padding: 60px 20px 40px;
@@ -322,6 +363,7 @@ body {
     margin: 30px auto 0;
 }
 
+/* Navigation */
 .main-nav {
     display: flex;
     justify-content: center;
@@ -387,6 +429,7 @@ body {
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
 }
 
+/* Card Hover Effects */
 .info-card,
 .character-card,
 .location-card,
@@ -439,6 +482,7 @@ body {
     z-index: 1;
 }
 
+/* Hero Section */
 .hero-section {
     text-align: center;
     padding: 60px 40px;
@@ -481,6 +525,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Buttons */
 .card-button,
 .access-button {
     display: inline-block;
@@ -504,6 +549,7 @@ body {
     box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
 }
 
+/* Content Sections */
 .content-section {
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(10, 10, 15, 0.8));
     border: 1px solid var(--border-glow);
@@ -524,6 +570,7 @@ body {
     line-height: 1.8;
 }
 
+/* Footer */
 .main-footer {
     text-align: center;
     padding: 40px 20px;
@@ -542,6 +589,7 @@ body {
     font-size: 0.95rem;
 }
 
+/* Location Cards */
 .location-card {
     margin-bottom: 30px;
 }
@@ -567,6 +615,7 @@ body {
     line-height: 1.7;
 }
 
+/* Player Access */
 .player-access {
     text-align: center;
     padding: 60px 40px;
@@ -600,6 +649,7 @@ body {
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
 }
 
+/* Recent Updates */
 .recent-updates {
     margin-top: 60px;
 }
@@ -640,6 +690,7 @@ body {
     display: block;
 }
 
+/* Login Container */
 .login-container {
     max-width: 500px;
     margin: 60px auto;
@@ -721,6 +772,7 @@ body {
     border-radius: 4px;
 }
 
+/* Player Dashboard */
 .player-dashboard {
     display: none;
 }
@@ -790,6 +842,7 @@ body {
     padding-bottom: 10px;
 }
 
+/* Theme Selector - IMPROVED READABILITY */
 .theme-selector-section {
     grid-column: span 2;
 }
@@ -802,7 +855,7 @@ body {
 
 .theme-btn {
     padding: 18px 12px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     font-family: 'Cinzel', serif;
     font-size: 1rem;
@@ -814,6 +867,21 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     letter-spacing: 1px;
     filter: none !important;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    opacity: 0.3;
+    z-index: -1;
 }
 
 .theme-btn:hover {
@@ -825,45 +893,50 @@ body {
 
 .theme-btn.active {
     border-color: #ffffff;
-    border-width: 4px;
+    border-width: 3px;
     box-shadow: 0 0 30px currentColor, inset 0 0 20px rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
     filter: none !important;
     color: #ffffff !important;
 }
 
+.theme-btn.active::before {
+    opacity: 0.5;
+}
+
 .theme-btn[data-theme="default"] { 
-    background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%); 
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4) 0%, rgba(212, 175, 55, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="crimson"] { 
-    background: linear-gradient(135deg, #ff1744 0%, #c62828 100%); 
+    background: linear-gradient(135deg, rgba(255, 23, 68, 0.4) 0%, rgba(198, 40, 40, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="emerald"] { 
-    background: linear-gradient(135deg, #00e676 0%, #00c853 100%); 
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.4) 0%, rgba(0, 200, 83, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="sapphire"] { 
-    background: linear-gradient(135deg, #2979ff 0%, #1565c0 100%); 
+    background: linear-gradient(135deg, rgba(41, 121, 255, 0.4) 0%, rgba(21, 101, 192, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="amethyst"] { 
-    background: linear-gradient(135deg, #d500f9 0%, #9c27b0 100%); 
+    background: linear-gradient(135deg, rgba(213, 0, 249, 0.4) 0%, rgba(156, 39, 176, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="silver"] { 
-    background: linear-gradient(135deg, #e0e0e0 0%, #9e9e9e 100%); 
+    background: linear-gradient(135deg, rgba(224, 224, 224, 0.4) 0%, rgba(158, 158, 158, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="amber"] { 
-    background: linear-gradient(135deg, #ffab00 0%, #ff6f00 100%); 
+    background: linear-gradient(135deg, rgba(255, 171, 0, 0.4) 0%, rgba(255, 111, 0, 0.3) 100%); 
 }
 
 .theme-btn[data-theme="rose"] { 
-    background: linear-gradient(135deg, #ff4081 0%, #f50057 100%); 
+    background: linear-gradient(135deg, rgba(255, 64, 129, 0.4) 0%, rgba(245, 0, 87, 0.3) 100%); 
 }
 
+/* Character Sheet Container */
 .character-sheet-container {
     background: rgba(10, 10, 15, 0.6);
     border: 1px solid var(--border-glow);
@@ -901,6 +974,7 @@ body {
     color: var(--accent-blue);
 }
 
+/* HP & AC Cards */
 .hp-card, .ac-card {
     text-align: center;
 }
@@ -955,6 +1029,7 @@ body {
     margin: 20px 0;
 }
 
+/* Ability Scores */
 .abilities-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -995,6 +1070,7 @@ body {
     font-weight: 600;
 }
 
+/* Attacks */
 .attacks-card {
     grid-column: span 2;
 }
@@ -1040,6 +1116,7 @@ body {
     font-weight: 600;
 }
 
+/* Proficiencies */
 .proficiencies-card {
     grid-column: span 2;
 }
@@ -1069,6 +1146,7 @@ body {
     line-height: 1.6;
 }
 
+/* Dice Roller */
 .dice-roller-section {
     grid-column: span 1;
 }
@@ -1233,6 +1311,7 @@ body {
     font-weight: 600;
 }
 
+/* Notes Area */
 .notes-area {
     width: 100%;
     min-height: 200px;
@@ -1276,6 +1355,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* New Note Button - uses theme accent */
 .new-note-btn {
     background: var(--theme-accent-1, #4ade80);
     color: var(--primary-dark);
@@ -1291,6 +1371,7 @@ body {
     transform: translateY(-2px) scale(1.02);
 }
 
+/* Note Organization Styles */
 .notes-manager {
     display: flex;
     flex-direction: column;
@@ -1429,13 +1510,36 @@ body {
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-    background: rgba(26, 26, 46, 0.8);
-    border: 1px solid var(--border-glow);
+    background: rgba(26, 26, 46, 0.95);
+    border: 2px solid var(--theme-accent-1, var(--accent-gold));
     border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 10000;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--theme-accent-1, var(--accent-gold));
+    backdrop-filter: blur(10px);
 }
 
 .note-editor.active {
     display: flex;
+    animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .note-editor-header {
@@ -1453,20 +1557,36 @@ body {
 }
 
 .close-editor-btn {
-    background: rgba(220, 38, 38, 0.2);
-    border: 1px solid var(--accent-red);
+    background: rgba(220, 38, 38, 0.3);
+    border: 2px solid var(--accent-red);
     color: var(--accent-red);
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-family: 'Spectral', serif;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
     transition: all 0.3s ease;
+    text-shadow: 0 0 10px currentColor;
 }
 
 .close-editor-btn:hover {
     background: var(--accent-red);
     color: white;
-    box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+    box-shadow: 0 0 20px var(--accent-red);
+    transform: scale(1.05);
+}
+
+/* Backdrop overlay when editing note */
+.note-editor::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    backdrop-filter: blur(5px);
 }
 
 @media (max-width: 1200px) {
