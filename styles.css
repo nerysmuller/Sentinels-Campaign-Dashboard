@@ -1,4 +1,3 @@
-/* Root Variables */
 :root {
     --primary-dark: #0a0a0f;
     --secondary-dark: #1a1a2e;
@@ -13,7 +12,6 @@
     --sky-color-2: #1a1a2e;
 }
 
-/* Theme Sky Colors - Changes the background night sky */
 body[data-theme="default"] {
     --sky-color-1: #0a0a0f;
     --sky-color-2: #1a1a2e;
@@ -70,7 +68,6 @@ body[data-theme="rose"] {
     --theme-accent-2: #f50057;
 }
 
-/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -88,7 +85,6 @@ body {
     transition: background 0.8s ease;
 }
 
-/* Twinkling Stars Background */
 .stars, .twinkling {
     position: fixed;
     top: 0;
@@ -118,7 +114,6 @@ body {
     to { background-position: -10000px 5000px; }
 }
 
-/* Shooting Stars Layer */
 .shooting-stars {
     position: fixed;
     top: 0;
@@ -167,7 +162,6 @@ body {
     }
 }
 
-/* Celestial Page Transition - Full Page Sweep */
 .page-transition {
     position: fixed;
     top: 0;
@@ -186,7 +180,6 @@ body {
     pointer-events: all;
 }
 
-/* Smooth sweep beam effect */
 .sweep-beam {
     position: absolute;
     top: 0;
@@ -214,7 +207,6 @@ body {
     }
 }
 
-/* Star particles for transition */
 .star-particle {
     position: absolute;
     background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(212, 175, 55, 0.9));
@@ -243,7 +235,6 @@ body {
     }
 }
 
-/* Shimmer effect for gold accents */
 @keyframes shimmer {
     0% {
         background-position: -200% center;
@@ -273,13 +264,11 @@ body {
     animation: shimmer 3s linear infinite;
 }
 
-/* Navigation active state - NO transparent text */
 .nav-link.active {
     color: var(--accent-gold) !important;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
 }
 
-/* Container */
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -288,7 +277,6 @@ body {
     z-index: 10;
 }
 
-/* Header */
 .main-header {
     text-align: center;
     padding: 60px 20px 40px;
@@ -334,7 +322,6 @@ body {
     margin: 30px auto 0;
 }
 
-/* Navigation */
 .main-nav {
     display: flex;
     justify-content: center;
@@ -400,7 +387,6 @@ body {
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
 }
 
-/* Card Hover Effects */
 .info-card,
 .character-card,
 .location-card,
@@ -453,7 +439,6 @@ body {
     z-index: 1;
 }
 
-/* Hero Section */
 .hero-section {
     text-align: center;
     padding: 60px 40px;
@@ -496,7 +481,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Buttons */
 .card-button,
 .access-button {
     display: inline-block;
@@ -520,7 +504,6 @@ body {
     box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
 }
 
-/* Content Sections */
 .content-section {
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(10, 10, 15, 0.8));
     border: 1px solid var(--border-glow);
@@ -541,7 +524,6 @@ body {
     line-height: 1.8;
 }
 
-/* Footer */
 .main-footer {
     text-align: center;
     padding: 40px 20px;
@@ -560,7 +542,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Location Cards */
 .location-card {
     margin-bottom: 30px;
 }
@@ -586,7 +567,6 @@ body {
     line-height: 1.7;
 }
 
-/* Player Access */
 .player-access {
     text-align: center;
     padding: 60px 40px;
@@ -620,7 +600,6 @@ body {
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
 }
 
-/* Recent Updates */
 .recent-updates {
     margin-top: 60px;
 }
@@ -661,7 +640,6 @@ body {
     display: block;
 }
 
-/* Login Container */
 .login-container {
     max-width: 500px;
     margin: 60px auto;
@@ -743,7 +721,6 @@ body {
     border-radius: 4px;
 }
 
-/* Player Dashboard */
 .player-dashboard {
     display: none;
 }
@@ -813,7 +790,6 @@ body {
     padding-bottom: 10px;
 }
 
-/* Theme Selector - IMPROVED READABILITY */
 .theme-selector-section {
     grid-column: span 2;
 }
@@ -888,7 +864,6 @@ body {
     background: linear-gradient(135deg, #ff4081 0%, #f50057 100%); 
 }
 
-/* Character Sheet Container */
 .character-sheet-container {
     background: rgba(10, 10, 15, 0.6);
     border: 1px solid var(--border-glow);
@@ -926,7 +901,6 @@ body {
     color: var(--accent-blue);
 }
 
-/* HP & AC Cards */
 .hp-card, .ac-card {
     text-align: center;
 }
@@ -981,7 +955,6 @@ body {
     margin: 20px 0;
 }
 
-/* Ability Scores */
 .abilities-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1022,7 +995,6 @@ body {
     font-weight: 600;
 }
 
-/* Attacks */
 .attacks-card {
     grid-column: span 2;
 }
@@ -1068,7 +1040,6 @@ body {
     font-weight: 600;
 }
 
-/* Proficiencies */
 .proficiencies-card {
     grid-column: span 2;
 }
@@ -1098,7 +1069,6 @@ body {
     line-height: 1.6;
 }
 
-/* Dice Roller */
 .dice-roller-section {
     grid-column: span 1;
 }
@@ -1263,7 +1233,6 @@ body {
     font-weight: 600;
 }
 
-/* Notes Area */
 .notes-area {
     width: 100%;
     min-height: 200px;
@@ -1307,7 +1276,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* New Note Button - uses theme accent */
 .new-note-btn {
     background: var(--theme-accent-1, #4ade80);
     color: var(--primary-dark);
@@ -1323,7 +1291,6 @@ body {
     transform: translateY(-2px) scale(1.02);
 }
 
-/* Note Organization Styles */
 .notes-manager {
     display: flex;
     flex-direction: column;
@@ -1502,7 +1469,6 @@ body {
     box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
     .stat-card.large-card {
         grid-column: span 1;
