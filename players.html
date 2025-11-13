@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Hub - Sentinels to the Starry Skies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="default">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="shooting-stars"></div>
+    <div class="page-transition" id="pageTransition"></div>
+    
+    <header class="main-header">
+        <div class="header-glow"></div>
+        <h1 class="title-main">Sentinels to the Starry Skies</h1>
+        <p class="subtitle">Celestial Archives</p>
+        <div class="divider"></div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="home.html" class="nav-link">
+            <span>Home</span>
+        </a>
+        <a href="lore.html" class="nav-link">
+            <span>Lore</span>
+        </a>
+        <a href="characters.html" class="nav-link">
+            <span>Characters</span>
+        </a>
+        <a href="locations.html" class="nav-link">
+            <span>Locations</span>
+        </a>
+        <a href="maps.html" class="nav-link">
+            <span>Maps</span>
+        </a>
+        <a href="players.html" class="nav-link special active">
+            <span>Player Hub</span>
+        </a>
+    </nav>
+
+    <main class="container">
+        <!-- Login Form -->
+        <div id="loginSection" class="login-container">
+            <h2>Celestial Archives Access</h2>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">
+                Enter your credentials to access your personal chronicle.
+            </p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="playerSelect">Select Your Character</label>
+                    <select id="playerSelect" required>
+                        <option value="">-- Choose Your Sentinel --</option>
+                        <option value="player1">Althaea Liadon</option>
+                        <option value="player2">Artyom Tonare</option>
+                        <option value="player3">Kova Liadon</option>
+                        <option value="player4">Trevor Adrieth</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="login-button">Enter Archives</button>
+                <p class="error-message" id="errorMessage" style="display: none;"></p>
+            </form>
+            
+            <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-glow); text-align: center;">
+                <p style="color: var(--text-dim); font-size: 0.9rem;">
+                    Forgot your password? Contact Nerys.<br>
+                    <em>Default passwords are set to "sentinel" for testing.</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Player Dashboard (Hidden by default) -->
+        <div id="playerDashboard" class="player-dashboard">
+            <div class="dashboard-header">
+                <h2 id="playerName">Welcome, Sentinel</h2>
+                <p class="player-class" id="playerClass">Class & Level</p>
+                <button class="logout-button" id="logoutBtn">Logout</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Theme Selector -->
+                <div class="dashboard-section theme-selector-section" style="grid-column: span 2;">
+                    <h3>Customize Your Theme</h3>
+                    <div class="theme-options">
+                        <button class="theme-btn active" data-theme="default">Gold</button>
+                        <button class="theme-btn" data-theme="crimson">Crimson</button>
+                        <button class="theme-btn" data-theme="emerald">Emerald</button>
+                        <button class="theme-btn" data-theme="sapphire">Sapphire</button>
+                        <button class="theme-btn" data-theme="amethyst">Amethyst</button>
+                        <button class="theme-btn" data-theme="silver">Silver</button>
+                        <button class="theme-btn" data-theme="amber">Amber</button>
+                        <button class="theme-btn" data-theme="rose">Rose</button>
+                    </div>
+                </div>
+
+                <!-- Character Sheet Display -->
+                <div class="dashboard-section" style="grid-column: span 2;">
+                    <h3>Character Sheet</h3>
+                    
+                    <div class="character-sheet-container">
+                        <div class="stat-grid">
+                            <div class="stat-card large-card">
+                                <h4>Character Info</h4>
+                                <div class="stat-info">
+                                    <p><strong>Name:</strong> <span id="charName">Loading...</span></p>
+                                    <p><strong>Race:</strong> <span id="charRace">-</span></p>
+                                    <p><strong>Class:</strong> <span id="charClass">-</span></p>
+                                    <p><strong>Level:</strong> <span id="charLevel">-</span></p>
+                                    <p><strong>Background:</strong> <span id="charBackground">-</span></p>
+                                </div>
+                            </div>
+
+                            <div class="stat-card hp-card">
+                                <h4>Hit Points</h4>
+                                <div class="hp-display">
+                                    <div class="hp-current" id="currentHP">--</div>
+                                    <div class="hp-max">/ <span id="maxHP">--</span></div>
+                                </div>
+                                <div class="hp-temp">
+                                    <label>Temp HP:</label>
+                                    <input type="number" id="tempHP" value="0" min="0">
+                                </div>
+                            </div>
+
+                            <div class="stat-card ac-card">
+                                <h4>Armor Class</h4>
+                                <div class="ac-display" id="armorClass">--</div>
+                            </div>
+
+                            <div class="stat-card ability-scores">
+                                <h4>Ability Scores</h4>
+                                <div class="abilities-grid">
+                                    <div class="ability">
+                                        <div class="ability-name">STR</div>
+                                        <div class="ability-score" id="strScore">10</div>
+                                        <div class="ability-mod" id="strMod">+0</div>
+                                    </div>
+                                    <div class="ability">
+                                        <div class="ability-name">DEX</div>
+                                        <div class="ability-score" id="dexScore">10</div>
+                                        <div class="ability-mod" id="dexMod">+0</div>
+                                    </div>
+                                    <div class="ability">
+                                        <div class="ability-name">CON</div>
+                                        <div class="ability-score" id="conScore">10</div>
+                                        <div class="ability-mod" id="conMod">+0</div>
+                                    </div>
+                                    <div class="ability">
+                                        <div class="ability-name">INT</div>
+                                        <div class="ability-score" id="intScore">10</div>
+                                        <div class="ability-mod" id="intMod">+0</div>
+                                    </div>
+                                    <div class="ability">
+                                        <div class="ability-name">WIS</div>
+                                        <div class="ability-score" id="wisScore">10</div>
+                                        <div class="ability-mod" id="wisMod">+0</div>
+                                    </div>
+                                    <div class="ability">
+                                        <div class="ability-name">CHA</div>
+                                        <div class="ability-score" id="chaScore">10</div>
+                                        <div class="ability-mod" id="chaMod">+0</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stat-card attacks-card">
+                                <h4>Attacks</h4>
+                                <div id="attacksList" class="attacks-list"></div>
+                            </div>
+
+                            <div class="stat-card proficiencies-card">
+                                <h4>Proficiencies</h4>
+                                <div id="proficienciesList" class="proficiencies-list"></div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-glow);">
+                            <a href="#" id="dndBeyondLink" class="card-button" target="_blank">
+                                View Full Sheet on D&D Beyond
+                            </a>
+                            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 10px;">
+                                Character data syncs from D&D Beyond
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dice Roller -->
+                <div class="dashboard-section dice-roller-section">
+                    <h3>Dice Roller</h3>
+                    <div class="dice-roller">
+                        <div class="dice-buttons">
+                            <button class="dice-btn" data-dice="d4">d4</button>
+                            <button class="dice-btn" data-dice="d6">d6</button>
+                            <button class="dice-btn" data-dice="d8">d8</button>
+                            <button class="dice-btn" data-dice="d10">d10</button>
+                            <button class="dice-btn" data-dice="d12">d12</button>
+                            <button class="dice-btn" data-dice="d20">d20</button>
+                            <button class="dice-btn" data-dice="d100">d100</button>
+                        </div>
+                        
+                        <div class="dice-modifiers">
+                            <label for="diceCount">Number of Dice:</label>
+                            <input type="number" id="diceCount" value="1" min="1" max="10">
+                            
+                            <label for="diceModifier">Modifier:</label>
+                            <input type="number" id="diceModifier" value="0" min="-99" max="99">
+                        </div>
+
+                        <div class="dice-result-display" id="diceResultDisplay">
+                            <div class="result-label">Result</div>
+                            <div class="result-value" id="resultValue">--</div>
+                            <div class="result-breakdown" id="resultBreakdown"></div>
+                        </div>
+
+                        <div class="dice-history" id="diceHistory">
+                            <h4>Recent Rolls</h4>
+                            <div id="historyList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Notes -->
+                <div class="dashboard-section" id="sessionNotesSection">
+                    <h3>Session Notes</h3>
+                </div>
+
+                <!-- Inventory Tracker -->
+                <div class="dashboard-section" id="inventoryNotesSection">
+                    <h3>Important Items</h3>
+                </div>
+
+                <!-- Relationships & Factions -->
+                <div class="dashboard-section" id="relationshipNotesSection">
+                    <h3>Relationships</h3>
+                </div>
+
+                <!-- Party Information -->
+                <div class="dashboard-section">
+                    <h3>Your Party</h3>
+                    <div style="color: var(--text-light); line-height: 1.8;">
+                        <p style="color: var(--text-dim); margin-bottom: 15px;">
+                            Fellow Sentinels:
+                        </p>
+                        <div id="partyList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                    </div>
+                </div>
+
+                <!-- Theories & Mysteries -->
+                <div class="dashboard-section" id="theoriesNotesSection" style="grid-column: span 2;">
+                    <h3>Theories & Mysteries</h3>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-glow);">
+                <p style="color: var(--text-dim); font-size: 0.9rem;">
+                    All notes are saved locally in your browser's storage. Make sure to backup important information!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Sentinels to the Starry Skies | DM: Nerys Muller</p>
+        <p class="footer-quote">"Even death shall offer you no respite."</p>
+    </footer>
+
+    <script src="player-script.js"></script>
+</body>
+</html>
