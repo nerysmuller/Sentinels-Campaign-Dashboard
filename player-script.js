@@ -2,11 +2,12 @@
 const playerData = {
     player1: {
         name: "Althaea Liadon",
-        class: "Cleric",
+        class: "High Elf Cleric | Level 6",
         password: "altlovesast",
         dndBeyondCharacterId: "141783747",
         fallbackData: {
             race: "Half-Elf",
+            class: "Cleric",
             level: 6,
             background: "Noble",
             hp: { current: 51, max: 51 },
@@ -28,11 +29,12 @@ const playerData = {
     },
     player2: {
         name: "Artyom Tonare",
-        class: "Barbarian",
+        class: "Dragonborn Barbarian | Level 6",
         password: "LiveLaughGleeba",
         dndBeyondCharacterId: "139724008",
         fallbackData: {
             race: "Dragonborn",
+            class: "Barbarian/Fighter (Multiclass)",
             level: 6,
             background: "Mercenary Veteran",
             hp: { current: 84, max: 84 },
@@ -54,11 +56,12 @@ const playerData = {
     },
     player3: {
         name: "Kova Liadon",
-        class: "Ranger 7",
+        class: "High Elf Ranger | Level 6",
         password: "Swarley",
         dndBeyondCharacterId: "141783776",
         fallbackData: {
             race: "High Elf",
+            class: "Ranger",
             level: 6,
             background: "Noble",
             hp: { current: 52, max: 52 },
@@ -80,11 +83,12 @@ const playerData = {
     },
     player4: {
         name: "Trevor Adrieth",
-        class: "Paladin",
+        class: "Half Elf Paladin | Level 6",
         password: "TrevorRocks856",
         dndBeyondCharacterId: "138489091",
         fallbackData: {
             race: "Half-Elf",
+            class: "Paladin",
             level: 6,
             background: "Soldier",
             hp: { current: 52, max: 52 },
