@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+// Firebase Meme Manager with Real-time Syncing
+// Import Firebase modules
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
@@ -13,12 +15,29 @@ const firebaseConfig = {
     storageBucket: "sentinels-campaign.firebasestorage.app",
     messagingSenderId: "1056018288604",
     appId: "1:1056018288604:web:66a2eb7bc4374bd35c4919"
-  };
+};
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const storage = getStorage(app);
+let app, db, storage;
+
+try {
+    app = initializeApp(firebaseConfig);
+    // Use the 'sentinels' database explicitly
+    db = getFirestore(app, 'sentinels');
+    storage = getStorage(app);
+    console.log('Firebase initialized successfully!');
+    console.log('Using database: sentinels');
+} catch (error) {
+    console.error('Firebase initialization error:', error);
+    // Try default database as fallback
+    try {
+        db = getFirestore(app);
+        console.log('Using default database');
+    } catch (fallbackError) {
+        console.error('Fallback failed:', fallbackError);
+        alert('Firebase connection failed. Please check the browser console for details.');
+    }
+}
 
 class FirebaseMemeManager {
     constructor() {
@@ -624,3 +643,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Make memeManager globally accessible for onclick handlers
 window.memeManager = memeManager;
+
