@@ -1,6 +1,4 @@
-// Firebase Meme Manager with Real-time Syncing
-// Import Firebase modules
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
@@ -9,13 +7,13 @@ import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'http
 // Get this from Firebase Console > Project Settings > Your Apps
 // ============================================
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY_HERE",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+    apiKey: "AIzaSyAwKQhvdvFsML0sD1Fox0x0Y1PasF8xkyM",
+    authDomain: "sentinels-campaign.firebaseapp.com",
+    projectId: "sentinels-campaign",
+    storageBucket: "sentinels-campaign.firebasestorage.app",
+    messagingSenderId: "1056018288604",
+    appId: "1:1056018288604:web:66a2eb7bc4374bd35c4919"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
