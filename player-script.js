@@ -109,7 +109,7 @@ const playerData = {
         }
      },
     player5: {
-        name: "Astathis "Excellence" Reaver",
+        name: "Astathis Reaver",
         class: "Tiefling Sorcerer/Warlock | Level 6",
         password: "livdaferret",
         dndBeyondCharacterId: "155823315",
@@ -130,7 +130,7 @@ const playerData = {
             proficiencies: {
                 languages: ["Common", "Elvish", "Infernal"],
                 weapons: ["Simple Weapons"],
-                tools: ["Dice Set],
+                tools: ["Dice Set"],
                 armor: ["Light Armor"]
             }
         }
