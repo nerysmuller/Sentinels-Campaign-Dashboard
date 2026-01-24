@@ -107,6 +107,33 @@ const playerData = {
                 armor: ["Light Armor", "Medium Armor", "Heavy Armor", "Shields"]
             }
         }
+     },
+    player5: {
+        name: "Astathis "Excellence" Reaver",
+        class: "Tiefling Sorcerer/Warlock | Level 6",
+        password: "livdaferret",
+        dndBeyondCharacterId: "155823315",
+        fallbackData: {
+            race: "Tiefling",
+            class: "Sorcerer/Warlock",
+            level: 6,
+            background: "Noble",
+            hp: { current: 41, max: 41 },
+            ac: 15,
+            abilities: { str: 10, dex: 17, con: 14, int: 13, wis: 12, cha: 22 },
+            attacks: [
+                { name: "Eldritch Blast", bonus: 9, damage: "1d10+6 force" },
+                { name: "Chill Touch", bonus: 9, damage: "2d8 necrotic" },
+                { name: "Dagger", bonus: 6, damage: "1d4+3 slashing" },
+                { name: "Unarmed Strike", bonus: 3, damage: "1 bludgeoning" }
+            ],
+            proficiencies: {
+                languages: ["Common", "Elvish", "Infernal"],
+                weapons: ["Simple Weapons"],
+                tools: ["Dice Set],
+                armor: ["Light Armor"]
+            }
+        }
     }
 };
 
